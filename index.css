@@ -1,0 +1,65 @@
+html, body {
+  background: #30373D;
+}
+
+header {
+  /* width: 1920px;
+  height: 139px; */
+  background: #000000;
+  color: #FFFFFF;
+  font-family: "Raleway";
+  font-size: 22px;
+  padding-top: 30px;
+  padding-bottom: 30px;
+}
+
+header ul {
+  display: flex;
+  margin: 0 auto;
+  align-items: center;
+  justify-content: space-around;
+  width: 80%;
+}
+
+header ul > li {
+  /* display: block; */
+  list-style: none;
+}
+
+header ul > li > a {
+  color: #FFFFFF;
+  text-decoration: none;
+}
+
+.button {
+  width: 215px;
+  height: 42px;
+  font-family: "Raleway";
+  font-size: 16px;
+  border-radius: 30px;
+  color: #FFFFFF;
+}
+
+.new-question {
+
+}
+
+#controls {
+  margin: 0 auto;
+  width: 60%;
+  display: flex;
+  justify-content: space-evenly;
+}
+
+#essay {
+  resize: none;
+  width: 1351px;
+  height: 1643px;
+  margin: 0 auto;
+  display: block;
+  border-radius: 16px;
+}
+
+#essay:focus {
+  outline: none;
+}
