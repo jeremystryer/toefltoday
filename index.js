@@ -74,9 +74,9 @@ document.addEventListener('DOMContentLoaded', () => {
 
     init() {
       this.selectQuestion();
-      setTimeout(this.startTimer.bind(this), 1000);
-      // this.startTimer();
-      this.setTab();
+      // setTimeout(this.startTimer.bind(this), 1000);
+      this.startTimer();
+      // this.setTab();
       this.addEventListeners();
     }
 
@@ -95,13 +95,14 @@ document.addEventListener('DOMContentLoaded', () => {
       growWrapDiv.insertAdjacentElement("beforeend", textarea);
       
       this.autoChangeTextarea();
+      this.setTab();
     }
 
     startTimer() {     
       // let seconds = 1800;
       // let countDiv = document.getElementById("timer");
 
-      this.createTextarea();
+      // this.createTextarea();
       // const countDown = setInterval(() => {
       //                   secondsPass();
       //                 }, 1000);
@@ -170,10 +171,11 @@ document.addEventListener('DOMContentLoaded', () => {
 
     insertQuestion(question) {
       let questionContainer = document.querySelector(".white-box");
-      // let questionContainer = document.querySelector(".intro");
+
       this.removeInstructions();
       this.processTemplates();
       questionContainer.innerHTML = this.templates["question-template"]({question});
+      this.createTextarea();
     }
 
     removeInstructions() {
@@ -198,24 +200,23 @@ document.addEventListener('DOMContentLoaded', () => {
     }
 
     setTab() {
-      // let essayArea = document.querySelector("#essay");
+      let essay = document.querySelector(".essay");
+      
+      essay.addEventListener("keydown", function(e) {
+        
+        if (e.keyCode === 9) {
+          e.preventDefault();
+          let start = this.selectionStart;
+          let end = this.selectionEnd;
 
-      // essayArea.addEventListener("keydown", function(e) {
-      //   if (e.keyCode === 9) {
-      //     e.preventDefault();
-      //     var doc = e.target.ownerDocument.defaultView;
-      //     var sel = doc.getSelection();
-      //     var range = sel.getRangeAt(0);
-  
-      //     var tabNode = document.createTextNode("\u00a0\u00a0\u00a0\u00a0");
-      //     range.insertNode(tabNode);
-  
-      //     range.setStartAfter(tabNode);
-      //     range.setEndAfter(tabNode); 
-      //     sel.removeAllRanges();
-      //     sel.addRange(range);
-      //   }
-      // });
+          this.value = this.value.substring(0, start) +
+            "\t" + this.value.substring(end);
+
+          // put caret at right position again
+          this.selectionStart =
+          this.selectionEnd = start + 1;
+        }
+      });
     }
   }
 
