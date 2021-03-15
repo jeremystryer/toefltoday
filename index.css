@@ -1,7 +1,10 @@
 html, body {
-  /* background: #30373D; */
   margin: 0;
-  /* padding-bottom: 2%; */
+  font: 1rem "Raleway", sans-serif;
+}
+
+#menu-button {
+  display: none;
 }
 
 main {
@@ -12,100 +15,124 @@ main {
 }
 
 header {
-  /* width: 1920px;
-  height: 139px; */
   width: 100%;
-  height: 100%;
   background: #000000;
-  color: #FFFFFF;
-  font-family: "Raleway";
-  font-size: 22px;
-  padding-top: 40px;
-  padding-bottom: 40px;
-  margin-top: 0;
-  /* margin-bottom: 60px; */
-  /* position: relative; */
+  position: relative;
+  padding: 1% 0;
 }
 
-#logo {
-  /* position: absolute; */
-}
-
-header nav ul {
+nav ul {
   display: flex;
-  /* flex-wrap: wrap; */
   margin: 0 auto;
-  align-items: center;
   justify-content: space-around;
-  width: 60%;
+  align-items: center;
   font-size: 2rem;
 }
 
-header ul > li {
-  /* display: block; */
+nav li {
+  margin: 0 2vw;
+  padding: 2% 3%;
   list-style-type: none;
-  /* font-size: 2rem; */
 }
 
-header ul > li > a {
+nav a:hover {
+  color: #CB8E00;
+}
+
+nav a {
   color: #FFFFFF;
   text-decoration: none;
 }
 
-/* #controls {
-  background-color: #FFFFFF;
-  border-radius: 16px;
-  margin: 0 auto;
-  width: 1351px;
-  display: flex;
-  justify-content: space-evenly;
-} */
+@media screen and (max-width: 1200px) {
+  #menu-button {
+    display: block;
+    margin: 0;
+    padding: 2vw;
+    font-size: 3vh;
+    background-color: #000000;
+    color: #ffffff;
+    border: none;
+    outline: none;
+    cursor: pointer;
+    position: absolute;
+    right: 85%;
+    top: 3%;
+  }
 
-#container {
+  nav ul {
+    flex-direction: column;
+    font-size: 1.5rem;
+    width: 100%;
+    margin: 0;
+    padding: 0;
+  }
+
+  nav li {
+    display: none;
+    width: 100%;
+    margin: 0;
+    padding: 1.5%;
+  }
+
+  nav a {
+    display: block;
+    text-align: center;
+    margin: 0 auto;
+  }
+
+  #logo {
+    display: none;
+  }
+  
+  ul::before {
+    content: url("./assets/svg/logo.svg");
+  }
+
+  .button-text {
+    display: none;
+  }
+
+  .button img {
+    padding: 0;
+    text-align: center;
+    width: 40%;
+    height: auto;
+  }
+
+  #about-contact-container {
+    flex-direction: column;
+  }
+
+  #about-me, #contact-me {
+    margin: 0 auto;
+    padding: 0;
+  }
+
+  #about-me, #contact-me p {
+    padding: 0;
+  }
+}
+
+#controls-container {
   width: 100%;
   background-color: #FFFFFF;
 }
 
-#essay-area {
+#writing-app {
   width: 80%;
   border-radius: 15px;
   margin: 0 auto;
   overflow: hidden;
-  position: relative;
 }
-
-/* #dark-mode { */
-  /* background-color: #30373D; */
-  /* background-color: red;
-  width: 84px;
-  height: 35px; */
-  /* border-radius: 525px; */
-
-  /* height: 35px; */
-  /* position: relative;
-  top: 20px;
-  left: 30px; */
-/* } */
 
 #controls {
   box-sizing: border-box;
-  /* outline: 1px solid red; */
-  /* position:absolute; */
-  /* top: 3px;
-  right:3px;
-  width: 60px; */
-  /* outline: 1px solid yellow; */
   width: 80%;
   margin: 0 auto;
   display: flex;
-  /* flex-wrap: wrap; */
   padding: 40px;
-  /* width: 60%; */
-  /* margin: 0 auto; */
   justify-content: space-around;
-  /* background-color: #FFFFFF; */
-  /* border-bottom: 1px solid #707070; */
-  /* align-items: center; */
 }
 
 .new-question {
@@ -128,8 +155,6 @@ header ul > li > a {
   background-color: #333333;
   width: 146px;
   height: 45px;
-  /* margin-right: 62px;
-  margin-top: 40px; */
   position: relative;
   top: 20px;
   right: 10px;
@@ -137,15 +162,11 @@ header ul > li > a {
   color: #CB8E00;
   text-align: center;
   font-size: 30px;
-  /* padding-top: 5px; */
 }
 
 .button {
   width: 20%;
   height: 65px;
-  /* padding: 1%; */
-  /* padding: 10px 0; */
-  /* height: auto; */
   color: #FFFFFF;
   outline: none;
   font-family: "Raleway";
@@ -153,7 +174,6 @@ header ul > li > a {
   border: none;
   border-radius: 30px;
   cursor: pointer;
-  /* vertical-align: middle; */
 }
 
 .button:disabled {
@@ -177,49 +197,65 @@ header ul > li > a {
   border-top: 1px solid #a9a6a6;
 }
 
+.white-box {
+  margin: 0 auto;
+  box-sizing: border-box;
+  font-family: 'Roboto', sans-serif;
+  font-size: 2rem;
+  color: #30373D;
+  background-color: #FFFFFF;
+  padding: 0 15%;
+  border-radius: 0 0 15px 15px;
+  min-height: 1200px;
+}
+
+.horizontal-thick-line-gray {
+  display: block;
+  width: 95%;
+  margin: 0 auto;
+  border-top: 5px solid #a9a6a6;
+  padding: 1%;
+}
+
 .vertical-line-gray {
   border-left: 1px solid #a9a6a6;
   margin: 2% 2% 4% 2%;
-  /* margin-bottom: 10%; */
-  /* height: 100%; */
 }
 
-#essay {
-  box-sizing: border-box;
-  width: 100%;
-  height: 1200px;
-  /* margin: 0 auto; */
+.white-box p {
+  margin: 0;
+}
+
+.bold {
+  font-weight: bold;
+}
+
+.white-box h1 {
+  margin: 0 auto 4%;
+  text-align: center;
+}
+
+.instructions {
   display: block;
-  border: none;
-  outline: none;
-  position: relative;
-  border-radius: 0 0 15px 15px;
-  font-family: 'Roboto', sans-serif;
-  font-size: 24px;
+  width: 100%;
+  margin: 3% auto 4%;
 }
 
-#instructions-welcome {
-  font-size: 2.5rem;
-  padding-bottom: 30px;
+.instructions li {
+  margin: 0 0 4% 0;
 }
 
-#instructions {
+#question-container {
   position: absolute;
-  top: 200px;
-  left: 200px;
-  color: #707070;
-  font-size: 2rem;
-  font-family: 'Roboto', sans-serif;
-  line-height: 250%;
+  top: 20%;
+  left: 50%;
 }
 
 #about-contact-container {
   display: flex;
-  flex-direction: row;
   color: #30373D;
   font-family: 'Raleway', sans-serif;
   font-size: 2.5rem;
-  /* background-color: #e0e1e3;  */
 }
 
 #about-me, #contact-me {
@@ -307,7 +343,6 @@ input[type="submit"] {
   font-size: 2.5rem;
   padding-top: 50px;
   padding-bottom: 50px;
-  /* background-color: #e0e1e3;  */
 }
 
 #testimonials {
@@ -321,15 +356,12 @@ input[type="submit"] {
   display: flex;
   align-items: center;
   text-align: left;
-  /* background-color: #FFFFFF; */
-  /* box-shadow: 10px 5px 5px #FFFFFF; */
   box-shadow: 10px 25px 25px  #dcdcde;
   border-radius: 15px;
   padding: 0 3%;
 }
 
 .flag-icon {
-  /* outline: 5px solid red; */
   width: 8%;
   border: 1px solid #bab3b3;
 }
@@ -342,13 +374,10 @@ input[type="submit"] {
 footer {
   margin: 0;
   margin-bottom: 2%;
-  /* background-color: #e0e1e3;  */
 }
 
 #footer-container {
-  /* outline: 3px solid red; */
   display: flex;
-  /* justify-content: center; */
   width: 40%;
   margin: 0 auto;
 }
@@ -356,7 +385,6 @@ footer {
 footer ul {
   display: flex;
   width: 50%;
-  /* flex-wrap: wrap; */
   margin: 0 auto;
   align-items: center;
   justify-content: space-around;
@@ -364,9 +392,7 @@ footer ul {
 }
 
 footer ul > li {
-  /* display: block; */
   list-style-type: none;
-  /* font-size: 2rem; */
   cursor: pointer;
 }
 
@@ -375,3 +401,52 @@ footer p {
   text-align: center;
   font-family: 'Raleway', sans-serif;
 }
+
+.grow-wrap {
+  display: grid;
+  overflow: word-wrap;
+}
+
+.grow-wrap::after {
+  content: attr(data-replicated-value) " ";
+  white-space: pre-wrap;
+  visibility: hidden;
+}
+
+.grow-wrap > .essay,
+.grow-wrap::after {
+  font: inherit;
+  grid-area: 1 / 1 / 2 / 2;
+  margin-top: 5%;
+  margin-bottom: 5%;
+  padding-bottom: 3%;
+}
+
+.essay {
+  overflow: hidden;
+  resize: none;
+  border: none;
+  outline: none;
+  font-family: 'Roboto', sans-serif;
+  font-size: 2rem;
+}
+
+.dont-break-out {
+  /* These are technically the same, but use both */
+  overflow-wrap: break-word;
+  word-wrap: break-word;
+
+  -ms-word-break: break-all;
+  /* This is the dangerous one in WebKit, as it breaks things wherever */
+  word-break: break-all;
+  /* Instead use this non-standard one: */
+  word-break: break-word;
+
+  /* Adds a hyphen where the word breaks, if supported (No Blink) */
+  -ms-hyphens: auto;
+  -moz-hyphens: auto;
+  -webkit-hyphens: auto;
+  hyphens: auto;
+
+}
+

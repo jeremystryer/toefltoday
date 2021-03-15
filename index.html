@@ -10,47 +10,73 @@
   <link href="https://fonts.googleapis.com/css2?family=Roboto&display=swap" rel="stylesheet">
   <link href="https://fonts.googleapis.com/css2?family=Raleway:wght@600&display=swap" rel="stylesheet">
   <link rel="preconnect" href="https://fonts.gstatic.com">
+  <link href="https://fonts.googleapis.com/css2?family=Raleway:wght@700&display=swap" rel="stylesheet">
+  <link rel="preconnect" href="https://fonts.gstatic.com">
   <link href="https://fonts.googleapis.com/css2?family=Raleway:wght@600&display=swap" rel="stylesheet">
+  <script type="text/javascript" src="./index.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/handlebars@latest/dist/handlebars.js"></script>
   <title>TOEFL Today</title>
 </head>
 <body>
   <header>
     <nav>
-      <ul>
-        <li><a href="#" class="active">Writing App</a></li> 
-        <li><a href="#">Blog</a></li>
+      <ul id="menu">
+        <button id="menu-button">☰</button>
+        <li><a href="#writing-app">Writing App</a></li>
+        <li><a href="#about-me">About Me</a></li>
         <img src="./assets/svg/logo.svg" alt="TOEFL Today Logo" id="logo"> 
-        <li><a href="#">About Me</a></li> 
-        <li><a href="#">Contact Me</a></li> 
+        <li><a href="#contact-me">Contact Me</a></li>
+        <li><a href="#testimonials">Student Reviews</a></li> 
       </ul>
     </nav>
   </header>
   <main>
-    <div id="essay-area">
-      <div id="container">
-        <!-- <div id="dark-mode">DARK MODE</div> -->
+    <section id="writing-app">
+      <div id="controls-container">
         <div id="controls">
-          <button class="new-question button"><img src="./assets/png/button-icons/question-icon.png" alt="question icon" class="icon">New Question</button> 
-          <button class="pause button" disabled><img src="./assets/png/button-icons/pause-icon.png" alt="pause icon" class="icon">Pause</button>
-          <button class="finish button" disabled><img src="./assets/png/button-icons/finish-icon.png" alt="finish icon" class="icon">Finish</button>
-          <!-- <span id="timer">TIMER</span> -->
-          <!-- <span id="timer"><img src="./assets/png/timer-icon.png" alt="timer icon" class="icon" id="timer-icon">30:00</span>  -->
+          <button class="new-question button">
+            <img src="./assets/png/button-icons/question-icon.png" alt="question icon" class="icon">
+            <span class="button-text">New Question</span>
+          </button> 
+          <button class="pause button" disabled>
+            <img src="./assets/png/button-icons/pause-icon.png" alt="pause icon" class="icon">
+            <span class="button-text">Pause</span>
+          </button>
+          <button class="finish button" disabled>
+            <img src="./assets/png/button-icons/finish-icon.png" alt="finish icon" class="icon">
+            <span class="button-text">Finish</span>
+          </button>
         </div>
-        <!-- <div class="horizontal-line-gray"></div> -->
+
+        <div class="horizontal-thick-line-gray"></div>
+      </div>
+      
+      <div class="white-box">
+        <!-- <div class="intro"> -->
+          <h1>Welcome to TOEFL Today's FREE writing app for the independent essay!</h1>
+        <!-- </div> -->
+
+        <ol class="instructions">
+          <li>
+            Click <button class="new-question button"><img src="./assets/png/button-icons/question-icon.png" alt="question icon" class="icon"><span class="button-text">New Question</span></button> above.
+          </li>
+          <li>
+            Write your essay.
+          </li>
+          <li>
+            Click <button class="finish button" disabled><img src="./assets/png/button-icons/finish-icon.png" alt="finish icon" class="icon"><span class="button-text">Finish</span></button> above when you are ready or the time ends.
+          </li>
+          <li>
+            TOEFL Today will review your spelling, vocabulary, grammar, and more!
+          </li>
+        </ol>
       </div>
 
-      <textarea id="essay" readonly></textarea>
-
-      <div id="instructions">
-        <h1 id="instructions-welcome">Welcome to TOEFL Today's FREE writing app for the independent essay!</h1>
-        <p>1. Click <button class="new-question button"><img src="./assets/png/button-icons/question-icon.png" alt="question icon" class="icon">New Question</button> above.</p>
-        <p>2. Write your essay.</p>
-        <p>3. Click <button class="finish button" disabled><img src="./assets/png/button-icons/finish-icon.png" alt="finish icon" class="icon">Finish</button> above when you are ready or the time ends.</p>
-        <p>4. TOEFL Today will review your spelling, vocabulary, grammar, and more!</p>
-      </div>
-    </div>
+    </section>
   </main>
+
   <div id="about-contact-container">
+
     <section id="about-me">
       <h1 class="section-title">About Me</h1>
       <div class="horizontal-line-orange"></div>
@@ -59,27 +85,28 @@
       <p>For more than 10 years, I have helped people all over the world improve their English reading, listening, speaking, and writing skills.</p>
       <p>I am also a software engineer.</p>
     </section>
+
     <div class="vertical-line-gray"></div>
+    
     <section id="contact-me">
       <h1 class="section-title">Contact Me</h1>
       <div class="horizontal-line-orange"></div>
       <p>If you are interested in receiving more personalized feedback on any section of the TOEFL, please send me a message.</p>
-      
-      <!-- <div id="form-container"> -->
-        <form action="#" method="post">
-          <label for="name"></label>
-          <input type="text" id="name" name="user_name" placeholder="Name">
 
-          <label for="mail"></label>
-          <input type="email" id="mail" name="user_email" placeholder="Email">
+      <form action="#" method="post">
+        <label for="name"></label>
+        <input type="text" id="name" name="user_name" placeholder="Name">
 
-          <label for="msg"></label>
-          <textarea id="msg" name="user_message" placeholder="Message"></textarea>
-          <input type="submit" value="Send">
-        </form>
-      </div>
+        <label for="mail"></label>
+        <input type="email" id="mail" name="user_email" placeholder="Email">
+
+        <label for="msg"></label>
+        <textarea id="msg" name="user_message" placeholder="Message"></textarea>
+        <input type="submit" value="Send">
+      </form>
     </section>
-  <!-- </div> -->
+  </div>
+
   <div class="horizontal-line-gray"></div>
   <section id="testimonials-section">
     <h1 class="section-title">See What Students Say</h1>
@@ -133,5 +160,9 @@
     </div>
     <!-- <p>&#169; 2021 TOEFL Today</p> -->
   </footer>
+
+  <script id="question-template" type="text/x-handlebars">
+    <p>{{question}}</p>
+  </script>
 </body>
 </html>
