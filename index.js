@@ -14,14 +14,30 @@ document.addEventListener('DOMContentLoaded', () => {
           this.essay = new Essay();
         }
       });
-
-      this.closeMenu();
+      
+      this.toggleMenuForSmallerScreens();
+      this.modifyMenuOnResize();
     }
 
-    closeMenu() {
+    modifyMenuOnResize() {
+      window.addEventListener("resize", event => {
+        let windowWidth = window.innerWidth;
+        let menuItems = menu.getElementsByTagName("li");
+        let menuBtn = document.querySelector("#menu-button");
+
+        if (windowWidth >= 1200) {
+          [...menuItems].forEach(item => item.style.display = "block");
+        } else if (windowWidth <= 1200) {
+          [...menuItems].forEach(item => item.style.display = "none");
+          menuBtn.innerText = "☰";
+        }
+      });
+    }
+
+    toggleMenuForSmallerScreens() {
       let menuBtn = document.querySelector("#menu-button");
       let menuItems = menu.getElementsByTagName("li");
-      
+
       menuBtn.addEventListener("click", e => {
         if (e.target.innerText === ("✕")) {
           e.target.innerText = "☰";
