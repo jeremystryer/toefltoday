@@ -13,7 +13,8 @@
   <link href="https://fonts.googleapis.com/css2?family=Raleway:wght@700&display=swap" rel="stylesheet">
   <link rel="preconnect" href="https://fonts.gstatic.com">
   <link href="https://fonts.googleapis.com/css2?family=Raleway:wght@600&display=swap" rel="stylesheet">
-  <script type="text/javascript" src="./index.js"></script>
+  <!-- <script type="text/javascript" src="./script/app.js"></script> -->
+  <script type="module" src="./script/app.js"></script>
   <script src="https://cdn.jsdelivr.net/npm/handlebars@latest/dist/handlebars.js"></script>
   <title>TOEFL Today</title>
 </head>
@@ -42,12 +43,21 @@
             <img src="./assets/png/button-icons/pause-icon.png" alt="pause icon" class="icon">
             <span class="button-text">Pause</span>
           </button>
+          <button class="continue button">
+            <img src="./assets/png/button-icons/continue-icon.png" alt="continue icon" class="icon">
+            <span class="button-text">Continue</span>
+          </button> 
           <button class="finish button" disabled>
             <img src="./assets/png/button-icons/finish-icon.png" alt="finish icon" class="icon">
             <span class="button-text">Finish</span>
           </button>
-        </div>
+          <!-- <div id="timer">TIMER</div> -->
 
+          <div id="timer-box"><span id="timer">30:00</span></div>
+        </div>
+<!-- 
+        <div id="timer-box"><span id="timer">TIMER</span></div> -->
+     
         <div class="horizontal-thick-line-gray"></div>
       </div>
       

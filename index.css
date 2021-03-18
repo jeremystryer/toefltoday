@@ -1,6 +1,8 @@
 html, body {
   margin: 0;
   font: 1rem "Raleway", sans-serif;
+  /* background: #30373D; */
+  width: 100%;
 }
 
 #menu-button {
@@ -12,6 +14,7 @@ main {
   margin: 0;
   padding-top: 5%;
   padding-bottom: 5%;
+  width: 100%;
 }
 
 header {
@@ -117,9 +120,11 @@ nav a {
 #controls-container {
   width: 100%;
   background-color: #FFFFFF;
+  /* display: flex; */
 }
 
 #writing-app {
+  position: relative;
   width: 80%;
   border-radius: 15px;
   margin: 0 auto;
@@ -139,29 +144,16 @@ nav a {
   background-color: #CB8E00;
 }
 
-.pause {
+.pause, .continue {
   background-color: #707070;
+}
+
+.continue {
+  display: none;
 }
 
 .finish {
   background-color: #30373D;
-}
-
-#timer {
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  box-sizing: border-box;
-  background-color: #333333;
-  width: 146px;
-  height: 45px;
-  position: relative;
-  top: 20px;
-  right: 10px;
-  border-radius: 5px;
-  color: #CB8E00;
-  text-align: center;
-  font-size: 30px;
 }
 
 .button {
@@ -173,6 +165,10 @@ nav a {
   font-size: 1.5rem;
   border: none;
   border-radius: 30px;
+  cursor: pointer;
+}
+
+.button:hover {
   cursor: pointer;
 }
 
@@ -447,6 +443,41 @@ footer p {
   -moz-hyphens: auto;
   -webkit-hyphens: auto;
   hyphens: auto;
-
 }
 
+#timer-box {
+  position: absolute;
+  top: 3%;
+  right: 3%;
+  background-color: #333333;
+  /* padding: 10px 30px; */
+  padding: 0.5% 2%;
+  border-radius: 5px;
+  display: none;
+  /* visibility: hidden; */
+}
+
+#timer {
+  /* display: none; */
+  /* display: block; */
+  /* position: absolute;
+  top: 7%;
+  right: %; */
+  /* display: flex;
+  align-items: center;
+  justify-content: center; */
+  box-sizing: border-box;
+  /* background-color: #333333; */
+  /* width: 146px;
+  height: 45px;
+  position: relative; */
+  /* top: 20px;
+  right: 10px; */
+  /* padding: 5px; */
+  border-radius: 15px;
+  color: #CB8E00;
+  text-align: center;
+  font-size: 2rem;
+  /* background: linear-gradient(to bottom, red, #900); */
+  font-family: 'Roboto', sans-serif;
+}
