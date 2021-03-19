@@ -14,6 +14,26 @@ export default class Essay {
     this.timer = new Timer();
   }
 
+  trackWordCount() {
+    let essay = document.querySelector(".essay");
+
+    essay.addEventListener("keyup", (e) => {
+      let content = essay.value;
+      let wordCountDiv = document.querySelector(".word-count");
+      let count = 0; 
+
+      let array = content.split(/[\s\r\n\t]/);
+      console.log(array);
+      for (let i = 0; i < array.length; i += 1) {
+        if (array[i] !== " " && Boolean(array[i].match(/[a-z]/ig))) { 
+          count += 1;
+        } 
+      } 
+
+      wordCountDiv.innerText = `${count} words`;
+    });
+  } 
+
   createTextarea() {
     let textarea = document.createElement("textarea");
     let growWrapDiv = document.createElement("div");
@@ -24,10 +44,11 @@ export default class Essay {
 
     textarea.placeholder = "Write your essay here...";
     textarea.disabled = true;
-    
+
     whitebox.insertAdjacentElement("beforeend", growWrapDiv);
     growWrapDiv.insertAdjacentElement("beforeend", textarea);
-    
+    this.createWordCounter();
+    this.trackWordCount();
     this.autoChangeTextarea();
     this.setTab();
   }
@@ -40,6 +61,15 @@ export default class Essay {
     timerBox.style.display = "block";
   }
 
+  createWordCounter() {
+    let wordCountDiv = document.createElement("div");
+    let whitebox = document.querySelector(".white-box")
+
+    whitebox.insertAdjacentElement("beforeend", wordCountDiv);
+    wordCountDiv.classList.add("word-count");
+    wordCountDiv.innerText = "0 words"
+  }
+
   autoChangeTextarea() {
     const grower = document.querySelector(".grow-wrap");
     const textarea = grower.querySelector(".essay");
@@ -48,49 +78,6 @@ export default class Essay {
       grower.dataset.replicatedValue = textarea.value;
     });
   }
-
-  // togglePause() {
-  //   let pauseBtn = document.querySelector(".pause");
-  //   let continueBtn = document.querySelector(".continue")
-
-  //   pauseBtn.addEventListener("click", () => {
-  //     pauseBtn.style.display = "none";
-  //     continueBtn.style.display = "block";
-  //     this.pauseTime();
-  //   });
-    
-  //   continueBtn.addEventListener("click", () => {
-  //     pauseBtn.style.display = "block";
-  //     continueBtn.style.display = "none";
-  //     this.continueTime();
-  //   });
-  // }
-
-  // preventTyping() {
-  //   let essayArea = document.querySelector("#essay-area");
-  //   essayArea.setAttribute("contenteditable", "false");
-  // }
-
-  // resetTimer() {
-  //   let countDiv = document.getElementById("timer");
-    
-  // }
-
-  // checkWordCount() {
-  //   let checkWordCountBtn = document.querySelector(".word-count");
-    
-  //   checkWordCountBtn.addEventListener('click', () => {
-  //     let essayArea = document.querySelector("#essay-area");
-  //     let text = essayArea.textContent;    
-  //     let numWords = text.match(/(\w|')*(\w|\-)+/gi);
-
-  //     if (!numWords) {
-  //       numWords = "";
-  //     }
-
-  //     alert(numWords.length);
-  //   });
-  // }
 
   insertQuestion(question) {
     let questionContainer = document.querySelector(".white-box");
