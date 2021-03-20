@@ -23,7 +23,7 @@ export default class Essay {
       let count = 0; 
 
       let array = content.split(/[\s\r\n\t]/);
-      console.log(array);
+    
       for (let i = 0; i < array.length; i += 1) {
         if (array[i] !== " " && Boolean(array[i].match(/[a-z]/ig))) { 
           count += 1;
