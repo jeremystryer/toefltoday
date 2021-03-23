@@ -6,8 +6,14 @@ export default class Timer {
   init() {
     this.showPauseButton();
     this.showNewTimer();
+    this.enableFinishBtn();
     this.addEventListeners();
     setTimeout(this.runTimer.bind(this), 1000);
+  }
+
+  enableFinishBtn() {
+    let finishBtn = document.querySelector(".finish")
+    finishBtn.disabled = false;
   }
 
   showNewTimer() {
@@ -24,7 +30,7 @@ export default class Timer {
   }
 
   runTimer() {
-    let time_in_minutes = 30;
+    let time_in_minutes = 0.10;
     let current_time = Date.parse(new Date());
     let pauseBtn = document.querySelector(".pause");
     
@@ -42,6 +48,7 @@ export default class Timer {
     let pauseBtn = document.querySelector(".pause");
     let continueBtn = document.querySelector(".continue");
     let newQuestionBtn = document.querySelector(".new-question");
+    let finishBtn = document.querySelector(".finish")
 
     pauseBtn.addEventListener('click', (e) => {
       this.toggleTimeButton(e.target);
@@ -55,6 +62,10 @@ export default class Timer {
 
     newQuestionBtn.addEventListener("click", () => {
       clearInterval(this.timeinterval);
+    });
+
+    finishBtn.addEventListener("click", () => {
+      
     });
   }
 
@@ -105,10 +116,18 @@ export default class Timer {
   
   run_clock(id, endtime) {
     let timer = document.getElementById(id);
+    let pauseBtn = document.querySelector(".pause");
+    let essay = document.querySelector(".essay");
+
+
     const update_clock = () => {
       var t = this.time_remaining(endtime);
       timer.innerHTML = `${this.padDigits(t.minutes)}:${this.padDigits(t.seconds)}`;
-      if (t.total <= 0){ clearInterval(this.timeinterval); }
+      if (t.total <= 0) { 
+        clearInterval(this.timeinterval); 
+        pauseBtn.disabled = true;
+        essay.disabled = true;
+      }
     }
 
     update_clock(); // run function once at first to avoid delay

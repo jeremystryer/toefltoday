@@ -4,7 +4,6 @@ import Timer from './timer.js';
 
 export default class Essay {
   constructor() {
-    this.totalRemainingSeconds = 1800;
     this.init();
   }
 
@@ -12,6 +11,7 @@ export default class Essay {
     this.selectQuestion();
     this.startEssay();
     this.timer = new Timer();
+    this.api = new API();
   }
 
   trackWordCount() {

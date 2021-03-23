@@ -9,18 +9,18 @@ document.addEventListener('DOMContentLoaded', () => {
 
     init() {
       this.addEventListeners();
+      this.callApi();
     }
  
     addEventListeners() {
       this.generateNewQuestion();
       this.modifyMenuOnResize();
       this.toggleMenuForSmallerScreens();
-      // this.togglePause();
     }
 
     generateNewQuestion() {
       let newQuestionBtns = document.querySelectorAll(".new-question");
-
+  
       [...newQuestionBtns].forEach(btn => {
         btn.addEventListener("click", (e) => {
           this.essay = new Essay();
@@ -56,42 +56,28 @@ document.addEventListener('DOMContentLoaded', () => {
           [...menuItems].forEach(item => item.style.display = "block");
         }
       });
-    }    
+    }
+
+    callApi() {
+      // const data = "text=Susan%20go%20to%20the%20store%20everyday&language=en-US";
+
+      // const xhr = new XMLHttpRequest();
+      // xhr.withCredentials = true;
+      
+      // xhr.addEventListener("readystatechange", function () {
+      //   if (this.readyState === this.DONE) {
+      //     console.log(this.responseText);
+      //   }
+      // });
+      
+      // xhr.open("POST", "https://grammarbot.p.rapidapi.com/check");
+      // xhr.setRequestHeader("content-type", "application/x-www-form-urlencoded");
+      // xhr.setRequestHeader("x-rapidapi-key", "4a434644b7mshf0c157810805032p180f52jsn6f7ab924b303");
+      // xhr.setRequestHeader("x-rapidapi-host", "grammarbot.p.rapidapi.com");
+      
+      // xhr.send(data);
+    }
   }
 
   new App();
 });
-
-  //   showTimeEndedModal() {
-  //     let modalReview = document.querySelector("#modal-review");
-  //     let reviewBtn = document.querySelector("#review-button");
-  //     modalReview.style.display = "block";
-  //     // this.essay.preventTyping();
-      
-  //     reviewBtn.addEventListener("click", () => {
-  //       let essayArea = document.querySelector("#essay-area");
-  //       let text = essayArea.textContent;
-
-  //       fetch("https://grammarbot.p.rapidapi.com/check", {
-  //         "method": "POST",
-  //         "headers": {
-  //           "content-type": "application/x-www-form-urlencoded",
-  //           "x-rapidapi-key": "4a434644b7mshf0c157810805032p180f52jsn6f7ab924b303",
-  //           "x-rapidapi-host": "grammarbot.p.rapidapi.com",
-  //         },
-  //         body: new URLSearchParams({
-  //           text: text,
-  //         }),
-  //       })
-  //       .then(response => {
-  //         return response.json();
-  //       })
-  //       .then(response => {
-  //         console.log(response);
-  //       })
-  //       .catch(err => {
-  //         console.error(err);
-  //       });
-  //     });
-  //   }
-  // }
