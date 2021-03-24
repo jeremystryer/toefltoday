@@ -7,6 +7,11 @@ export default class API {
   }
 
   init(essayDraft) {
+    this.checkGrammar(this.essayDraft);
+    this.disableFinishButtons();
+  }
+
+  checkGrammar(essayDraft) {
     const settings = {
       "async": true,
       "crossDomain": true,
@@ -27,6 +32,14 @@ export default class API {
       response.matches.forEach(message => {
         console.log(message);
       });
+    });
+  }
+
+  disableFinishButtons() {
+    let finishBtns = document.querySelectorAll(".finish");
+
+    [...finishBtns].forEach(finishBtn => {
+      finishBtn.disabled = true;
     });
   }
 }

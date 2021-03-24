@@ -59,7 +59,7 @@ export default class Essay {
     let pauseBtn = document.querySelector(".pause");
     let continueBtn = document.querySelector(".continue");
     let newQuestionBtn = document.querySelector(".new-question");
-    let finishBtn = document.querySelector(".finish")
+    let finishBtn = document.querySelector(".finish");
 
     pauseBtn.addEventListener('click', (e) => {
       this.togglePauseContinueButton(e.target);
@@ -103,6 +103,7 @@ export default class Essay {
 
         pauseBtn.disabled = true;
         continueBtn.disabled = true;
+        
         this.api = new API(essayContent);
       });
     });
@@ -235,8 +236,7 @@ export default class Essay {
           "\t" + this.value.substring(end);
 
         // put caret at right position again
-        this.selectionStart =
-        this.selectionEnd = start + 1;
+        this.selectionStart = this.selectionEnd = start + 1;
       }
     });
   }

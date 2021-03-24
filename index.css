@@ -489,6 +489,10 @@ footer p {
   text-align: center;
 }
 
+#modal-not-enough-words p {
+  text-align: left;
+}
+
 #modal-content-time-ended, #modal-content-not-enough-words {
   background-color: #fefefe;
   margin: auto;

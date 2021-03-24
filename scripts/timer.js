@@ -81,7 +81,6 @@ export default class Timer {
     let pauseBtn = document.querySelector(".pause");
     let essay = document.querySelector(".essay");
 
-
     const updateTime = () => {
       let totalTime = this.time_remaining(endtime);
       timer.innerHTML = `${Utilities.padDigits(totalTime.minutes)}:${Utilities.padDigits(totalTime.seconds)}`;
@@ -90,6 +89,7 @@ export default class Timer {
         clearInterval(this.timeinterval); 
         pauseBtn.disabled = true;
         essay.disabled = true;
+
         this.showTimeEndedModal();
       }
     }
