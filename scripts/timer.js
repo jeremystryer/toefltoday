@@ -1,85 +1,18 @@
+import Utilities from './utils.js';
+
 export default class Timer {
   constructor() {
     this.init();
   }
 
   init() {
-    this.showPauseButton();
     this.showNewTimer();
-    this.enableFinishBtn();
-    this.addEventListeners();
-    setTimeout(this.runTimer.bind(this), 1000);
-  }
-
-  enableFinishBtn() {
-    let finishBtn = document.querySelector(".finish")
-    finishBtn.disabled = false;
+    setTimeout(this.startTimer.bind(this), 1000);
   }
 
   showNewTimer() {
     let timer = document.getElementById("timer");
     timer.innerHTML = "30:00";
-  }
-
-  showPauseButton() {
-    let pauseBtn = document.querySelector(".pause");
-    let continueBtn = document.querySelector(".continue");
-
-    pauseBtn.style.display = "block";
-    continueBtn.style.display = "none";
-  }
-
-  runTimer() {
-    let time_in_minutes = 0.10;
-    let current_time = Date.parse(new Date());
-    let pauseBtn = document.querySelector(".pause");
-    
-    this.deadline = new Date(current_time + time_in_minutes * 60 * 1000);
-    this.currentTimer = true;
-
-    pauseBtn.disabled = false;
-    this.run_clock('timer', this.deadline);
-
-    let textarea = document.querySelector(".essay");
-    textarea.disabled = false;
-  }
-
-  addEventListeners() {
-    let pauseBtn = document.querySelector(".pause");
-    let continueBtn = document.querySelector(".continue");
-    let newQuestionBtn = document.querySelector(".new-question");
-    let finishBtn = document.querySelector(".finish")
-
-    pauseBtn.addEventListener('click', (e) => {
-      this.toggleTimeButton(e.target);
-      this.pauseTimer();
-    });
-
-    continueBtn.addEventListener('click', (e) => {
-      this.toggleTimeButton(e.target);
-      this.continueTimer();
-    });
-
-    newQuestionBtn.addEventListener("click", () => {
-      clearInterval(this.timeinterval);
-    });
-
-    finishBtn.addEventListener("click", () => {
-      
-    });
-  }
-
-  toggleTimeButton(option) {
-    let pauseBtn = document.querySelector(".pause");
-    let continueBtn = document.querySelector(".continue");
-
-    if (option === pauseBtn || option.parentElement === pauseBtn) {
-      pauseBtn.style.display = "none";
-      continueBtn.style.display = "block";
-    } else if (option === continueBtn || option.parentElement === continueBtn) {
-      continueBtn.style.display = "none";
-      pauseBtn.style.display = "block";
-    }
   }
 
   pauseTimer() {
@@ -95,43 +28,71 @@ export default class Timer {
     this.deadline = new Date(Date.parse(new Date()) + this.time_left);
 
     // start the clock
-    this.run_clock('timer', this.deadline);
+    this.runTimer('timer', this.deadline);
 
     let textarea = document.querySelector(".essay");
     textarea.disabled = false;
   }
 
   time_remaining(endtime) {
-    var t = Date.parse(endtime) - Date.parse(new Date());
-    var seconds = Math.floor( (t/1000) % 60 );
-    var minutes = Math.floor( (t/1000/60) % 60 );
-    // var hours = Math.floor( (t/(1000*60*60)) % 24 );
-    // var days = Math.floor( t/(1000*60*60*24) );
-    return {'total':t, 'minutes':minutes, 'seconds':seconds};
+    let totalTime = Date.parse(endtime) - Date.parse(new Date());
+    let seconds = Math.floor( (totalTime/1000) % 60 );
+    let minutes = Math.floor( (totalTime/1000/60) % 60 );
+
+    return {'total': totalTime, 'minutes': minutes, 'seconds': seconds};
   }
 
-  padDigits(n) {
-    return (n < 10 ? "0" : "") + n;
+  startTimer() {
+    let time_in_minutes = 0.25;
+    let current_time = Date.parse(new Date());
+    let pauseBtn = document.querySelector(".pause");
+    
+    this.deadline = new Date(current_time + time_in_minutes * 60 * 1000);
+    this.currentTimer = true;
+
+    pauseBtn.disabled = false;
+    this.runTimer('timer', this.deadline);
+
+    let textarea = document.querySelector(".essay");
+    textarea.disabled = false;
   }
   
-  run_clock(id, endtime) {
+  showTimeEndedModal() {
+    let modal = document.getElementById("modal");
+    let closeBtn = document.getElementById("close-button");
+
+    closeBtn.onclick = function() {
+      modal.style.display = "none";
+    }
+
+    window.onclick = function(event) {
+      if (event.target === modal) {
+        modal.style.display = "none";
+      }
+    }
+
+    modal.style.display = "block";
+  }
+
+  runTimer(id, endtime) {
     let timer = document.getElementById(id);
     let pauseBtn = document.querySelector(".pause");
     let essay = document.querySelector(".essay");
 
 
-    const update_clock = () => {
-      var t = this.time_remaining(endtime);
-      timer.innerHTML = `${this.padDigits(t.minutes)}:${this.padDigits(t.seconds)}`;
-      if (t.total <= 0) { 
+    const updateTime = () => {
+      let totalTime = this.time_remaining(endtime);
+      timer.innerHTML = `${Utilities.padDigits(totalTime.minutes)}:${Utilities.padDigits(totalTime.seconds)}`;
+
+      if (totalTime.total <= 0) { 
         clearInterval(this.timeinterval); 
         pauseBtn.disabled = true;
         essay.disabled = true;
+        this.showTimeEndedModal();
       }
     }
 
-    update_clock(); // run function once at first to avoid delay
-    
-    this.timeinterval = setInterval(update_clock, 1000);
+    updateTime(); // run function once at first to avoid delay
+    this.timeinterval = setInterval(updateTime, 1000);
   }
 }

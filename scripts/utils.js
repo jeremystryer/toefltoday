@@ -3,4 +3,8 @@ export default class Utilities {
     let index = Math.floor(Math.random() * questions.length);
     return questions[index];
   }
+
+  static padDigits(n) {
+    return (n < 10 ? "0" : "") + n;
+  }
 }

@@ -1,6 +1,7 @@
 import Utilities from './utils.js';
 import runTimer from './timer.js';
 import Timer from './timer.js';
+import API from './api.js'
 
 export default class Essay {
   constructor() {
@@ -10,8 +11,75 @@ export default class Essay {
   init() {
     this.selectQuestion();
     this.startEssay();
+    this.showPauseButton();
+    this.enableFinishButton();
     this.timer = new Timer();
-    this.api = new API();
+    this.addEventListeners();
+  }
+
+  enableFinishButton() {
+    let finishBtns = document.querySelectorAll(".finish");
+  
+    [...finishBtns].forEach(btn => {
+      btn.disabled = false;
+    });
+  }
+
+  togglePauseContinueButton(option) {
+    let pauseBtn = document.querySelector(".pause");
+    let continueBtn = document.querySelector(".continue");
+
+    if (option === pauseBtn || option.parentElement === pauseBtn) {
+      pauseBtn.style.display = "none";
+      continueBtn.style.display = "block";
+    } else if (option === continueBtn || option.parentElement === continueBtn) {
+      continueBtn.style.display = "none";
+      pauseBtn.style.display = "block";
+    }
+  }
+
+  showPauseButton() {
+    let pauseBtn = document.querySelector(".pause");
+    let continueBtn = document.querySelector(".continue");
+
+    pauseBtn.style.display = "block";
+    continueBtn.style.display = "none";
+  }
+  
+  addEventListeners() {
+    let pauseBtn = document.querySelector(".pause");
+    let continueBtn = document.querySelector(".continue");
+    let newQuestionBtn = document.querySelector(".new-question");
+    let finishBtn = document.querySelector(".finish")
+
+    pauseBtn.addEventListener('click', (e) => {
+      this.togglePauseContinueButton(e.target);
+      this.timer.pauseTimer();
+    });
+
+    continueBtn.addEventListener('click', (e) => {
+      this.togglePauseContinueButton(e.target);
+      this.timer.continueTimer();
+    });
+
+    newQuestionBtn.addEventListener("click", () => {
+      clearInterval(this.timer.timeinterval);
+    });
+
+    let finishBtns = document.querySelectorAll(".finish");
+  
+    [...finishBtns].forEach(btn => {
+      let pauseBtn = document.querySelector(".pause");
+      let continueBtn = document.querySelector(".continue");
+      
+      btn.addEventListener("click", (e) => {
+        let essayContent = document.querySelector(".essay").value;
+        pauseBtn.disabled = true;
+        continueBtn.disabled = true;
+        this.timer.pauseTimer();
+        this.api = new API(essayContent);
+      });
+    });
   }
 
   trackWordCount() {
@@ -57,7 +125,7 @@ export default class Essay {
     let timerBox = document.querySelector("#timer-box");
     let pauseBtn = document.querySelector(".pause");
 
-    this.createTextarea();
+    // this.createTextarea();
     timerBox.style.display = "block";
   }
 
@@ -89,9 +157,7 @@ export default class Essay {
   }
 
   removeInstructions() {
-    let instructions = document.querySelector(".instructions");
     let whitebox = document.querySelector(".white-box");
-    // instructions.innerHTML = "";
     whitebox.innerHTML = "";
   }
 

@@ -9,7 +9,6 @@ document.addEventListener('DOMContentLoaded', () => {
 
     init() {
       this.addEventListeners();
-      this.callApi();
     }
  
     addEventListeners() {
@@ -56,26 +55,6 @@ document.addEventListener('DOMContentLoaded', () => {
           [...menuItems].forEach(item => item.style.display = "block");
         }
       });
-    }
-
-    callApi() {
-      // const data = "text=Susan%20go%20to%20the%20store%20everyday&language=en-US";
-
-      // const xhr = new XMLHttpRequest();
-      // xhr.withCredentials = true;
-      
-      // xhr.addEventListener("readystatechange", function () {
-      //   if (this.readyState === this.DONE) {
-      //     console.log(this.responseText);
-      //   }
-      // });
-      
-      // xhr.open("POST", "https://grammarbot.p.rapidapi.com/check");
-      // xhr.setRequestHeader("content-type", "application/x-www-form-urlencoded");
-      // xhr.setRequestHeader("x-rapidapi-key", "4a434644b7mshf0c157810805032p180f52jsn6f7ab924b303");
-      // xhr.setRequestHeader("x-rapidapi-host", "grammarbot.p.rapidapi.com");
-      
-      // xhr.send(data);
     }
   }
 
