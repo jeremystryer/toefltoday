@@ -58,12 +58,14 @@ export default class Timer {
   }
   
   showTimeEndedModal() {
-    let modal = document.getElementById("modal");
-    let closeBtn = document.getElementById("close-button");
+    let modal = document.querySelector("#modal-time-ended");
+    let closeBtns = document.querySelectorAll(".close-button");
 
-    closeBtn.onclick = function() {
-      modal.style.display = "none";
-    }
+    [...closeBtns].forEach(btn => {
+      btn.addEventListener("click", () => {
+        modal.style.display = "none";
+      });
+    });
 
     window.onclick = function(event) {
       if (event.target === modal) {

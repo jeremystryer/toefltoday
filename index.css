@@ -475,7 +475,7 @@ footer p {
   color: #6a6767;
 }
 
-#modal {
+#modal-time-ended, #modal-not-enough-words {
   display: none;
   position: fixed;
   z-index: 1;
@@ -489,7 +489,7 @@ footer p {
   text-align: center;
 }
 
-#modal-content {
+#modal-content-time-ended, #modal-content-not-enough-words {
   background-color: #fefefe;
   margin: auto;
   padding: 20px;
@@ -506,15 +506,15 @@ footer p {
   padding-bottom: 1.5%;
 }
 
-#close-button {
+.close-button {
   color: #aaaaaa;
   float: right;
   font-size: 28px;
   font-weight: bold;
 }
 
-#close-button:hover,
-#close-button:focus {
+.close-button:hover,
+.close-button:focus {
   color: #000;
   text-decoration: none;
   cursor: pointer;

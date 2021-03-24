@@ -5,6 +5,7 @@ import API from './api.js'
 
 export default class Essay {
   constructor() {
+    this.wordCount = 0;
     this.init();
   }
 
@@ -45,6 +46,14 @@ export default class Essay {
     pauseBtn.style.display = "block";
     continueBtn.style.display = "none";
   }
+
+  showContinueButton() {
+    let pauseBtn = document.querySelector(".pause");
+    let continueBtn = document.querySelector(".continue");
+
+    pauseBtn.style.display = "none";
+    continueBtn.style.display = "block";
+  }
   
   addEventListeners() {
     let pauseBtn = document.querySelector(".pause");
@@ -71,15 +80,51 @@ export default class Essay {
     [...finishBtns].forEach(btn => {
       let pauseBtn = document.querySelector(".pause");
       let continueBtn = document.querySelector(".continue");
-      
+
       btn.addEventListener("click", (e) => {
         let essayContent = document.querySelector(".essay").value;
+        let timer = document.getElementById("timer");
+
+        this.timer.pauseTimer();
+        
+        if (this.wordCount < 150) {
+          this.showNotEnoughWordsModal();
+
+          if (timer.innerText === "00:00") {
+            let modalTimeEnded = document.querySelector("#modal-time-ended");
+            modalTimeEnded.style.display = "none";
+            pauseBtn.disabled = true;
+          } else {
+            this.showContinueButton();
+          }
+
+          return;
+        }
+
         pauseBtn.disabled = true;
         continueBtn.disabled = true;
-        this.timer.pauseTimer();
         this.api = new API(essayContent);
       });
     });
+  }
+
+  showNotEnoughWordsModal() {
+    let modal = document.querySelector("#modal-not-enough-words");
+    let closeBtns = document.querySelectorAll(".close-button");
+
+    [...closeBtns].forEach(btn => {
+      btn.addEventListener("click", () => {
+        modal.style.display = "none";
+      });
+    });
+
+    window.onclick = function(event) {
+      if (event.target === modal) {
+        modal.style.display = "none";
+      }
+    }
+
+    modal.style.display = "block";
   }
 
   trackWordCount() {
@@ -97,7 +142,8 @@ export default class Essay {
           count += 1;
         } 
       } 
-
+      
+      this.wordCount = count;
       wordCountDiv.innerText = `${count} words`;
     });
   } 

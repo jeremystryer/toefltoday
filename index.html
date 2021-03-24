@@ -63,7 +63,7 @@
             Click <button class="new-question button"><img src="./assets/png/button-icons/question-icon.png" alt="question icon" class="icon"><span class="button-text">New Question</span></button> above.
           </li>
           <li>
-            Write your essay.
+            Write your essay (a minimum of 150 words is required).
           </li>
           <li>
             Click <button class="finish button" disabled><img src="./assets/png/button-icons/finish-icon.png" alt="finish icon" class="icon"><span class="button-text">Finish</span></button> above when you are ready or the time ends.
@@ -162,14 +162,23 @@
     <!-- <p>&#169; 2021 TOEFL Today</p> -->
   </footer>
 
-  <div id="modal">
-    <div id="modal-content">
-      <span id="close-button">&times;</span>
+  <div id="modal-time-ended">
+    <div id="modal-content-time-ended">
+      <span class="close-button">&times;</span>
       <img src="./assets/png/social-media/logo-orange-and-blue.png" alt="logo">
       <p>Your time has ended. Review your essay</p>
-      <button class="finish button" disabled><img src="./assets/png/button-icons/finish-icon.png" alt="finish icon" class="icon"><span class="button-text">Finish</span></button>
+      <button class="finish button"><img src="./assets/png/button-icons/finish-icon.png" alt="finish icon" class="icon"><span class="button-text">Finish</span></button>
     </div>
-  
+  </div>
+
+  <div id="modal-not-enough-words">
+    <div id="modal-content-not-enough-words">
+      <span class="close-button">&times;</span>
+      <img src="./assets/png/social-media/logo-orange-and-blue.png" alt="logo">
+      <p>Check your word count below. You need to write at least 150 words.</p>
+      <p>If your time has not ended, you can click on "Continue" above.</p>
+      <p>If your has time ended, you will need to click on "New Question" above and begin a new essay.</p>
+    </div>
   </div>
 
   <script id="question-template" type="text/x-handlebars">
