@@ -205,8 +205,31 @@ nav a {
   min-height: 1200px;
   
   position: relative;
+}
+
+.report {
+  margin: 0 auto;
+  box-sizing: border-box;
+  font-family: 'Roboto', sans-serif;
+  font-size: 2rem;
+  color: #30373D;
+  background-color: #FFFFFF;
+  padding: 2% 15%;
+  border-radius: 15px;
+  min-height: 1200px;
+  
+  position: relative;
+  width: 35%;
   /* outline: 3p solid red; */
 }
+
+.report-section {
+  border: 2px solid gray;
+}
+
+/* #report-container {
+  display: none;
+} */
 
 .horizontal-thick-line-gray {
   display: block;
@@ -475,7 +498,7 @@ footer p {
   color: #6a6767;
 }
 
-#modal-time-ended, #modal-not-enough-words {
+#modal-time-ended {
   display: none;
   position: fixed;
   z-index: 1;
@@ -489,11 +512,7 @@ footer p {
   text-align: center;
 }
 
-#modal-not-enough-words p {
-  text-align: left;
-}
-
-#modal-content-time-ended, #modal-content-not-enough-words {
+#modal-content-time-ended {
   background-color: #fefefe;
   margin: auto;
   padding: 20px;

@@ -1,26 +1,25 @@
 import Essay from "./essay.js";
 
 export default class API {
-  constructor(essayDraft) {
+  constructor(essayDraft, generateReportFunc) {
     this.essayDraft = essayDraft;
-    this.init(this.essayDraft);
+    this.init(this.essayDraft, generateReportFunc);
   }
 
-  init(essayDraft) {
-    this.checkGrammar(this.essayDraft);
-    this.disableFinishButtons();
+  init(essayDraft, generateReportFunc) {
+    this.checkGrammar(this.essayDraft, generateReportFunc);
   }
 
-  checkGrammar(essayDraft) {
+  checkGrammar(essayDraft, generateReportFunc) {
     const settings = {
       "async": true,
       "crossDomain": true,
-      "url": "https://grammarbot.p.rapidapi.com/check",
+      "url": "https://dnaber-languagetool.p.rapidapi.com/v2/check",
       "method": "POST",
       "headers": {
         "content-type": "application/x-www-form-urlencoded",
         "x-rapidapi-key": "4a434644b7mshf0c157810805032p180f52jsn6f7ab924b303",
-        "x-rapidapi-host": "grammarbot.p.rapidapi.com"
+        "x-rapidapi-host": "dnaber-languagetool.p.rapidapi.com",   
       },
       "data": {
         "text": essayDraft,
@@ -29,17 +28,9 @@ export default class API {
     };
     
     $.ajax(settings).done(function (response) {
-      response.matches.forEach(message => {
-        console.log(message);
-      });
-    });
-  }
-
-  disableFinishButtons() {
-    let finishBtns = document.querySelectorAll(".finish");
-
-    [...finishBtns].forEach(finishBtn => {
-      finishBtn.disabled = true;
+      generateReportFunc(response);
+      // debugger;
+      // console.log(response);
     });
   }
 }

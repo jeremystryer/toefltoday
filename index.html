@@ -48,7 +48,6 @@
             <img src="./assets/png/button-icons/finish-icon.png" alt="finish icon" class="icon">
             <span class="button-text">Finish</span>
           </button>
-
           <div id="timer-box"><span id="timer">30:00</span></div>
         </div>
      
@@ -56,7 +55,7 @@
       </div>
       
       <div class="white-box">
-          <h1>Welcome to TOEFL Today's FREE writing app for the independent essay!</h1>
+        <h1>Welcome to TOEFL Today's FREE writing app for the independent essay!</h1>
 
         <ol class="instructions">
           <li>
@@ -147,6 +146,7 @@
 
     </div>
   </section>
+
   <footer>
     <div id="footer-container">
       <img src="./assets/png/social-media/logo-orange-and-blue.png" alt="logo">
@@ -171,15 +171,37 @@
     </div>
   </div>
 
-  <div id="modal-not-enough-words">
-    <div id="modal-content-not-enough-words">
-      <span class="close-button">&times;</span>
+  <script id="report-template" type="text/x-handlebars">
+    <div id="report">
       <img src="./assets/png/social-media/logo-orange-and-blue.png" alt="logo">
-      <p>Check your word count below. You need to write at least 150 words.</p>
-      <p>If your time has not ended, you can click on "Continue" above.</p>
-      <p>If your time has ended, you will need to click on "New Question" above and begin a new essay.</p>
+      <div class="horizontal-line-gray"></div>
+      <h1>Report</h1>
+      <div class="report-section">
+        <p>Number of Paragraphs: {{paragraph-count}}</p>
+        <p>Essays that receive top scores have between 4 - 5 paragraphs.</p>
+      </div>
+      <div class="report-section">
+        <p>Number of Words: {{word-count}}</p>
+        <p>Essays that receive top scores have between 350 - 400 words.</p>
+      </div>
+      <div class="report-section">
+        <p>Grammar Mistakes</p>
+        <p>{{grammar-mistakes}}</p>
+      </div>
+      <div class="report-section">
+        <p>Spelling Mistakes</p>
+        <p>{{spelling-mistakes}}</p>
+      </div>
+      <div class="report-section">
+        <p>Punctuation Mistakes</p>
+        <p>{{punctuation-mistakes}}</p>
+      </div>
+      <div class="report-section">
+        <p>Vocabulary Suggestions</p>
+        <p>{{vocabulary-suggestions}}</p>
+      </div>
     </div>
-  </div>
+  </script>
 
   <script id="question-template" type="text/x-handlebars">
     <p>{{question}}</p>
@@ -188,6 +210,6 @@
   <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
   <script type="module" src="./scripts/app.js"></script>
   <script src="https://cdn.jsdelivr.net/npm/handlebars@latest/dist/handlebars.js"></script>
-  <script src="https://unpkg.com/axios/dist/axios.min.js"></script>
+
 </body>
 </html>
