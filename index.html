@@ -177,30 +177,55 @@
       <div class="horizontal-line-gray"></div>
       <h1>Report</h1>
       <div class="report-section">
-        <p>Number of Paragraphs: {{paragraph-count}}</p>
-        <p>Essays that receive top scores have between 4 - 5 paragraphs.</p>
+        <h2>Overview</h2>
+        <dl>
+          <dt>Time: {{timeElapsed}}</dt>
+          <dd>You have up to 30 minutes to complete your essay. Make sure that you use the entire time to brainstorm, write, and edit.</dd>
+        </dl>
+        <dl>
+          <dt>Number of Paragraphs: {{paragraphCount}}</dt>
+          <dd>Essays that receive top scores have between 4 - 5 paragraphs.</dd>
+        </dl>
+        <dl>
+          <dt>Number of Words: {{wordCount}}</dt>
+          <dd>Essays that receive top scores have between 350 - 400 words.</dd>
+        </dl>
       </div>
-      <div class="report-section">
-        <p>Number of Words: {{word-count}}</p>
-        <p>Essays that receive top scores have between 350 - 400 words.</p>
-      </div>
-      <div class="report-section">
-        <p>Grammar Mistakes</p>
-        <p>{{grammar-mistakes}}</p>
-      </div>
-      <div class="report-section">
+      <ul class="report-section">
+        <h2>Grammar Mistakes</h2>
+        {{#each grammarMistakes}}
+        <li>Sentence: {{this.sentence}}</li>
+        <li>Mistake: {{this.message}}</li>
+        <li>Suggested Change:
+          <ul>
+          {{#each this.replacements}}
+            <li>{{this.value}} 
+              {{#if this.shortDescription}}
+               ({{this.shortDescription}})
+              {{/if}}
+            </li>
+          {{/each}}
+          </ul>
+        </li>
+        {{/each}}
+      </ul>
+      <!-- <div class="report-section">
         <p>Spelling Mistakes</p>
-        <p>{{spelling-mistakes}}</p>
+        <p>{{spellingMistakes}}</p>
       </div>
       <div class="report-section">
         <p>Punctuation Mistakes</p>
-        <p>{{punctuation-mistakes}}</p>
+        <p>{{punctuationMistakes}}</p>
       </div>
       <div class="report-section">
         <p>Vocabulary Suggestions</p>
-        <p>{{vocabulary-suggestions}}</p>
+        <p>{{vocabularySuggestions}}</p>
       </div>
-    </div>
+      <div class="report-section">
+        <p>Other</p>
+        <p>{{other}}</p>
+      </div>
+    </div> -->
   </script>
 
   <script id="question-template" type="text/x-handlebars">

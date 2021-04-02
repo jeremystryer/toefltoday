@@ -32,7 +32,7 @@ nav ul {
   font-size: 2rem;
 }
 
-nav li {
+li {
   margin: 0 2vw;
   padding: 2% 3%;
   list-style-type: none;
@@ -118,6 +118,7 @@ nav a {
 }
 
 #controls-container {
+  box-sizing: border-box;
   width: 100%;
   background-color: #FFFFFF;
   /* display: flex; */
@@ -207,24 +208,38 @@ nav a {
   position: relative;
 }
 
-.report {
+/* #report {
+  overflow: auto;
+} */
+
+.report-container {
   margin: 0 auto;
   box-sizing: border-box;
   font-family: 'Roboto', sans-serif;
   font-size: 2rem;
   color: #30373D;
   background-color: #FFFFFF;
-  padding: 2% 15%;
+  padding: 2.5%;
   border-radius: 15px;
-  min-height: 1200px;
+  /* min-height: 1200px; */
   
   position: relative;
   width: 35%;
-  /* outline: 3p solid red; */
+  overflow: hidden;
+}
+
+.report-content {
+  /* overflow-y: auto; */
+  /* border-radius:8px; */
+  width: 100%;
+  height: 100%;
+  overflow: auto;
+  padding: 3.5%;
 }
 
 .report-section {
   border: 2px solid gray;
+  padding: 2%;
 }
 
 /* #report-container {

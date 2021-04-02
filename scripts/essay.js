@@ -78,8 +78,7 @@ export default class Essay {
         this.disableButton(continueBtn)
 
         this.countParagraphs();
-        
-        console.log(this.timer);
+
         this.api = new API(essayContent, this.generateReport.bind(this));
       });
     });
@@ -96,19 +95,16 @@ export default class Essay {
   createAreaForReport() {
     let mainArea = document.querySelector("main");
     let reportContainer = document.createElement("div");
+    let reportContent = document.createElement("div");
     let writingAppSection = document.querySelector("#writing-app");
 
-    // let reportContainer = this.templates["report-template"]({});
-    reportContainer.classList.add("report");
+    reportContainer.classList.add("report-container");
+    reportContent.classList.add("report-content");
+
     mainArea.style.display = "flex";
     mainArea.insertAdjacentElement("afterbegin", reportContainer);
-
-    // this.question = this.templates["report-template"]({question});
-    // questionContainer.innerHTML = this.question;
-
-    let logo = document.createElement("img");
-    logo.src="./assets/png/social-media/logo-orange-and-blue.png";
-    reportContainer.insertAdjacentElement("afterbegin", logo);
+    reportContainer.insertAdjacentElement("afterbegin", reportContent);
+    reportContainer.style.height = this.getHeightOfEssay();
   }
 
   reduceWritingAppWidth() {
@@ -143,13 +139,7 @@ export default class Essay {
   }
 
   generateReport(response) {
-    this.modifyView();
-
     let matches = response.matches;
-    let spellingMistakes = [];
-    let grammarMistakes = [];
-    let punctuationMistakes = [];
-    let vocabularySuggestions = [];
 
     let essayReport = { 
                         timeElapsed: this.timer.showElapsedTime(),
@@ -161,8 +151,35 @@ export default class Essay {
                         vocabularySuggestions: [],
                         other: [],
                      }
-    
-    matches.forEach(match => {
+                    
+    matches.forEach(match => {      
+      let category = match.rule.id;
+
+      switch (category) {
+        case 'TYPOS':
+          essayReport.spellingMistakes.push(match);
+          break;
+        case "SENTENCE_WHITESPACE":
+        case "COMMA_PARENTHESIS_WHITESPACE":
+          essayReport.punctuationMistakes.push(match);
+          break;
+        case "HE_VERB_AGR":
+        case "MD_BASEFORM":
+        case "AI_HYDRA_LEO_MISSING_A":
+        case "PRP_VBG":
+        case "SENTENCE_FRAGMENT":
+          essayReport.grammarMistakes.push(match);
+          break;
+        case "IN_CHINA":
+        case "IN_CHINA":
+        default:
+          essayReport.other.push(match);
+      }
+    });
+
+    this.modifyScreenView();
+    this.removeTimer();
+    this.showCards(essayReport);
       // console.log("---------")
       // console.log(match.rule.category.id); // use this to sort mistakes into categories
       // console.log(match.shortMessage); // use this to provide a short description of mistake
@@ -172,24 +189,34 @@ export default class Essay {
       // console.log(match.length); // use this with offset to highlight word/phrase with mistake
       // console.log(match.sentence); // use this to reproduce sentence
       // console.log(match.replacements); // use this to provide correction (is an array)
-      
-      let category = match.rule.category.id;
-
-      switch (category) {
-        case 'TYPOS':
-          essayReport.spellingMistakes.push(category);
-        // case "" 
-      }
-  
-    });
-
   }
 
-  modifyView() {
+  getHeightOfEssay() {
+    let whitebox = document.querySelector(".white-box");
+    let controlsContainer = document.querySelector("#controls-container");
+    let offsetHeightOfWhitebox = whitebox.offsetHeight;
+    let offsetHeightOfControlsContainer = controlsContainer.offsetHeight;
+    console.log(offsetHeightOfWhitebox + offsetHeightOfControlsContainer + "px");
+    return offsetHeightOfWhitebox + offsetHeightOfControlsContainer + "px";
+  }
+
+  removeTimer() {
+    let timerBox = document.querySelector("#timer-box");
+    timerBox.style.display = "none";
+  }
+
+  showCards(errors) {
+    let reportContainer = document.querySelector(".report-container");
+    let reportContent = document.querySelector(".report-content");
+    let reports = this.templates["report-template"](errors);
+    reportContent.innerHTML = reports;
+  }
+
+  modifyScreenView() {
     this.removeButtons(); 
     this.removeTimeEndedModal(); 
     this.stopTimer();
-    this.reduceWritingAppWidth() 
+    this.reduceWritingAppWidth();
     this.disableTextArea();
     this.createAreaForReport(); 
   }
@@ -344,7 +371,6 @@ export default class Essay {
     document.querySelectorAll("script[type='text/x-handlebars']").forEach(tmpl => {
       this.templates[tmpl["id"]] = Handlebars.compile(tmpl["innerHTML"]);
     });
-
   }
 
   setTab() {
