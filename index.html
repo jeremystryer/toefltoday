@@ -62,7 +62,7 @@
             Click <button class="new-question button"><img src="./assets/png/button-icons/question-icon.png" alt="question icon" class="icon"><span class="button-text">New Question</span></button> above.
           </li>
           <li>
-            Write your essay (a minimum of 150 words is required).
+            Write your essay.
           </li>
           <li>
             Click <button class="finish button" disabled><img src="./assets/png/button-icons/finish-icon.png" alt="finish icon" class="icon"><span class="button-text">Finish</span></button> above when you are ready or the time ends.
@@ -79,19 +79,21 @@
 
     <section id="about-me">
       <h1 class="section-title">About Me</h1>
-      <div class="horizontal-line-orange"></div>
+
       <p>Hi, I'm Jeremy.</p>
-      <p>I created TOEFL Today to help people prepare for the TOEFL and .</p>
-      <p>For more than 10 years, I have helped people all over the world improve their English reading, listening, speaking, and writing skills.</p>
-      <p>I am also a software engineer.</p>
+      <p>I created TOEFL Today to help people prepare for the TOEFL.</p>
+      <p>I have worked in international education for nearly 15 years.</p>
+      <p>I am from Boston, Massachusetts.</p>
     </section>
 
     <div class="vertical-line-gray"></div>
     
     <section id="contact-me">
       <h1 class="section-title">Contact Me</h1>
-      <div class="horizontal-line-orange"></div>
-      <p>If you are interested in receiving more personalized feedback on any section of the TOEFL, please send me a message.</p>
+
+      <p>I often tutor students from all over the world.</p>
+        
+      <p>If you are interested in receiving more personalized feedback on the speaking, reading, listening, or writing sections of the TOEFL, please send me a message.</p> 
 
       <form action="#" method="post">
         <label for="name"></label>
@@ -147,7 +149,7 @@
     </div>
   </section>
 
-  <footer>
+  <!-- <footer>
     <div id="footer-container">
       <img src="./assets/png/social-media/logo-orange-and-blue.png" alt="logo">
       <ul>
@@ -159,8 +161,7 @@
       </ul>
       <p>&#169; 2021 TOEFL Today</p>
     </div>
-    <!-- <p>&#169; 2021 TOEFL Today</p> -->
-  </footer>
+  </footer> -->
 
   <div id="modal-time-ended">
     <div id="modal-content-time-ended">
@@ -176,7 +177,7 @@
       <img src="./assets/png/social-media/logo-orange-and-blue.png" alt="logo">
       <div class="horizontal-line-gray"></div>
       <h1>Report</h1>
-      <div class="report-section">
+      <div class="overview report-section">
         <h2>Overview</h2>
         <dl>
           <dt>Time: {{timeElapsed}}</dt>
@@ -190,42 +191,90 @@
           <dt>Number of Words: {{wordCount}}</dt>
           <dd>Essays that receive top scores have between 350 - 400 words.</dd>
         </dl>
+        <dl id="words-per-paragraph-dl">
+          <dt>Words Per Paragraph:</dt>
+          <dd id="words-per-paragraph-dd">
+            <ul>
+              {{#each wordCountPerParagraph}}
+                <li>
+                 Paragraph {{this.paragraph}}: {{this.wordCount}}
+                </li>
+              {{/each}}
+            </ul>
+          </dd>
+          <dd>Paragraphs should have a similar word count so that your essay is well-structured and balanced. However, your introduction (first paragraph) and conclusion (second paragraph) may be shorter.</dd>
+        </dl>
       </div>
-      <ul class="report-section">
+      <div class="report-section">
         <h2>Grammar Mistakes</h2>
+        {{#if grammargMistakes}}
         {{#each grammarMistakes}}
-        <li>Sentence: {{this.sentence}}</li>
-        <li>Mistake: {{this.message}}</li>
-        <li>Suggested Change:
-          <ul>
+          {{> reportTemplateSectionPartial }}
+        {{/each}}
+        {{else}}
+          <p class="no-mistakes-found">No Grammar Mistakes Found</p>
+        {{/if}}
+      </div>
+      <div class="report-section">
+        <h2>Spelling Mistakes</h2>
+        {{#if spellingMistakes}}
+        {{#each spellingMistakes}}
+          {{> reportTemplateSectionPartial }}
+        {{/each}}
+        {{else}}
+          <p class="no-mistakes-found">No Spelling Mistakes Found</p>
+        {{/if}}
+      </div>
+      <div class="report-section">
+        <h2>Punctuation Mistakes</h2>
+        {{#if punctuationMistakes}}
+        {{#each punctuationMistakes}}
+          {{> reportTemplateSectionPartial }}
+        {{/each}}
+        {{else}}
+          <p class="no-mistakes-found">No Punctuation Mistakes Found</p>
+        {{/if}}
+      </div>
+      <div class="report-section">
+        <h2>Other Mistakes</h2>
+        {{#if other}}
+        {{#each otherMistakes}}
+          {{> reportTemplateSectionPartial }}
+        {{/each}}
+        {{else}}
+          <p class="no-mistakes-found">No Other Mistakes Found</p>
+        {{/if}}
+      </div>
+    </div>
+  </script>
+
+  <script id="report-template-section-partial" type="text/x-handlebars">
+    <dl>
+
+      <div class="horizontal-line-gray"></div>    
+
+      <dt>Sentence:</dt>
+      <dd>{{this.sentence}}</dd>
+
+      <dt>Mistake:</dt>
+      <dd>{{this.message}}</dd>
+
+      <dt>Suggested Changes:</dt>
+      <dd>
+        <ul>
           {{#each this.replacements}}
-            <li>{{this.value}} 
+            <li>
+              {{this.value}}
               {{#if this.shortDescription}}
-               ({{this.shortDescription}})
+              ({{this.shortDescription}})
               {{/if}}
             </li>
           {{/each}}
-          </ul>
-        </li>
-        {{/each}}
-      </ul>
-      <!-- <div class="report-section">
-        <p>Spelling Mistakes</p>
-        <p>{{spellingMistakes}}</p>
-      </div>
-      <div class="report-section">
-        <p>Punctuation Mistakes</p>
-        <p>{{punctuationMistakes}}</p>
-      </div>
-      <div class="report-section">
-        <p>Vocabulary Suggestions</p>
-        <p>{{vocabularySuggestions}}</p>
-      </div>
-      <div class="report-section">
-        <p>Other</p>
-        <p>{{other}}</p>
-      </div>
-    </div> -->
+        </ul>
+      </dd>
+
+    </dl>
+
   </script>
 
   <script id="question-template" type="text/x-handlebars">

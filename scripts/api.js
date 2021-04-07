@@ -29,8 +29,6 @@ export default class API {
     
     $.ajax(settings).done(function (response) {
       generateReportFunc(response);
-      // debugger;
-      // console.log(response);
     });
   }
 }

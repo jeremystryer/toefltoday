@@ -1,9 +1,15 @@
 import Essay from './essay.js';
 import Utilities from './utils.js';
+import API from './api.js';
 
 document.addEventListener('DOMContentLoaded', () => {
   class App {
     constructor() {
+      this.pauseBtn = document.querySelector(".pause");
+      this.continueBtn = document.querySelector(".continue");
+      this.finishBtns = document.querySelectorAll(".finish");
+      this.newQuestionBtns = document.querySelectorAll(".new-question");
+      this.essay = null;
       this.init();
     }
 
@@ -12,19 +18,106 @@ document.addEventListener('DOMContentLoaded', () => {
     }
  
     addEventListeners() {
-      this.generateNewQuestion();
+      this.newQuestionEvent();
+      this.pauseEvent();
+      this.continueEvent();
+      this.finishEvent();
       this.modifyMenuOnResize();
       this.toggleMenuForSmallerScreens();
     }
 
-    generateNewQuestion() {
-      let newQuestionBtns = document.querySelectorAll(".new-question");
-  
-      [...newQuestionBtns].forEach(btn => {
+    pauseEvent() {
+      this.pauseBtn.addEventListener('click', (e) => {
+        this.pauseBtn.style.display = "none";
+        this.continueBtn.style.display = "block";
+
+        this.essay.timer.stopTimer();
+        this.disableTextArea();
+      });
+    }
+
+    continueEvent() {
+      this.continueBtn.addEventListener('click', (e) => {
+        this.continueBtn.style.display = "none";
+        this.pauseBtn.style.display = "block";
+        this.essay.timer.continueTimer();
+        this.enableTextArea();
+      });
+    }
+
+    finishEvent() {
+      [...this.finishBtns].forEach(btn => {
         btn.addEventListener("click", (e) => {
-          this.essay = new Essay();
+  
+          let essayContent = document.querySelector(".essay").value;
+
+          this.pauseBtn.disabled = true;
+          this.continueBtn.disabled = true;
+          
+          this.essay.timer.stopTimer();
+          this.essay.countParagraphs();
+          this.essay.countWordsPerParagraph();
+  
+          this.essay.api = new API(essayContent, this.essay.generateReport.bind(this.essay));
         });
       });
+    }
+
+    disableTextArea() {
+      let textarea = document.querySelector(".essay");
+      textarea.disabled = true;
+    }
+  
+    enableTextArea() {
+      let textarea = document.querySelector(".essay");
+      textarea.disabled = false;
+    }
+
+    showAllButtons() {
+      let finishBtn = document.querySelector(".finish");
+  
+      this.pauseBtn.style.display = "block";
+      finishBtn.style.display = "block";
+
+      this.pauseBtn.disabled = false;
+      this.continueBtn.disabled = false;
+    }
+
+    newQuestionEvent() {
+      [...this.newQuestionBtns].forEach(btn => {
+        btn.addEventListener("click", (e) => {
+          let reportContainer = document.querySelector(".report-container");
+          let mainArea = document.querySelector("main");
+
+          if (this.currentEssayExists()) {
+            let currentEssayTimerId = this.essay.timer.timerId;
+            clearInterval(currentEssayTimerId);
+          }
+
+          if (reportContainer) {
+            let writingAppSection = document.querySelector("#writing-app");
+
+            reportContainer.remove();
+            mainArea.style.display = "block";
+            writingAppSection.style.width = "80%";
+          }
+
+          this.showAllButtons();
+          this.essay = new Essay();
+          this.disableNewQuestionBtn();
+        });
+      });
+    }
+
+    disableNewQuestionBtn() {
+      let controls = document.querySelector("#controls");
+      let newQuestionBtn = controls.querySelector(".new-question");
+
+      newQuestionBtn.disabled = true;
+    }
+
+    currentEssayExists() {
+      return this.essay;
     }
 
     modifyMenuOnResize() {

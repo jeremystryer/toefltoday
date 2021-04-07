@@ -12,7 +12,15 @@ export default class Timer {
 
   launchTimer() {
     this.setTimerProperties();
+    this.enableNewQuestionBtn();
     this.runTimer();
+  }
+
+  enableNewQuestionBtn() {
+    let controls = document.querySelector("#controls");
+    let newQuestionBtn = controls.querySelector(".new-question");
+
+    newQuestionBtn.disabled = false;
   }
 
   setTimerProperties() {
