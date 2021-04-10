@@ -52,13 +52,13 @@ export default class Essay {
     writingAppSection.style.width = "60%";
   }
 
-  removeTimeEndedModal() {
-    let timeEndedModal = document.querySelector("#modal-time-ended");
+  // removeTimeEndedModal() {
+  //   let timeEndedModal = document.querySelector("#modal-time-ended");
 
-    if (timeEndedModal) {
-      timeEndedModal.style.display = "none";
-    }
-  }
+  //   if (timeEndedModal) {
+  //     timeEndedModal.style.display = "none";
+  //   }
+  // }
 
   removeButtons() {
     let pauseBtn = document.querySelector(".pause");

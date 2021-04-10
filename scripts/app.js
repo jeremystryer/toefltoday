@@ -24,6 +24,64 @@ document.addEventListener('DOMContentLoaded', () => {
       this.finishEvent();
       this.modifyMenuOnResize();
       this.toggleMenuForSmallerScreens();
+      this.submitFormEvent();
+    }
+
+    submitFormEvent() {
+      let form = document.querySelector("form");
+
+      form.addEventListener("submit", (e) => {
+        e.preventDefault();
+
+        let formElements = form.elements;
+
+        $.ajax({
+          method: 'POST',
+          url: 'https://formsubmit.co/ajax/513d3d9edde39122c6459bbe8407b337',
+          dataType: 'json',
+          accepts: 'application/json',
+          data: {
+              name: formElements.name.value,
+              email: formElements.mail.value,
+              message: formElements.msg.value,
+          },
+          success: () => this.showMessageConfirmationModal(),
+          error: (err) => console.log(err),
+        });
+      });
+    }
+
+    showMessageConfirmationModal() {
+      let modalMessageConfirmation = document.querySelector("#modal-message-confirmation");
+      modalMessageConfirmation.style.display = "block";
+      this.clearForm();
+      this.closeModalWhenClicked();
+    }
+
+    clearForm() {
+      let form = document.querySelector("form");
+      let formElements = form.elements;
+
+      formElements.name.value = "";
+      formElements.mail.value = "";
+      formElements.msg.value = "";
+    }
+
+    closeModalWhenClicked() {
+      let closeBtns = document.querySelectorAll(".close-button");
+      let modal = document.querySelector("#modal-message-confirmation");
+  
+      [...closeBtns].forEach(btn => {
+        btn.addEventListener("click", () => {
+          modal.style.display = "none";
+        });
+      });
+  
+      window.addEventListener("click", event => {
+        if (event.target === modal) {
+          modal.style.display = "none";
+        }
+      });
     }
 
     pauseEvent() {
