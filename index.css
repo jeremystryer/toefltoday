@@ -1,15 +1,25 @@
 html, body {
   margin: 0;
   font: 1rem "Raleway", sans-serif;
-  /* background: #30373D; */
   width: 100%;
 }
 
-#menu-button {
-  display: none;
+/* body {
+  display: grid;
+  grid-template-columns: 100%;
+  grid-template-rows: 
+} */
+
+header {
+  /* grid-area: hd; */
+  width: 100%;
+  background: #000000;
+  position: relative;
+  padding: 1% 0;
 }
 
 main {
+  /* grid-area: main; */
   background: #30373D;
   margin: 0;
   padding-top: 5%;
@@ -17,12 +27,15 @@ main {
   width: 100%;
 }
 
-header {
-  width: 100%;
-  background: #000000;
-  position: relative;
-  padding: 1% 0;
+
+
+
+#menu-button {
+  display: none;
 }
+
+
+
 
 nav ul {
   display: flex;
@@ -104,16 +117,19 @@ nav a {
   }
 
   #about-contact-container {
-    flex-direction: column;
+    flex-direction: column;=
+    width: 100%;
   }
 
   #about-me, #contact-me {
     margin: 0 auto;
     padding: 0;
+    width: 100%;
   }
 
   #about-me, #contact-me p {
     padding: 0;
+    width: 100%;
   }
 }
 
@@ -388,6 +404,13 @@ input[type="submit"] {
   grid-template-columns: 1fr 1fr;
   padding: 50px;
   font-size: 1.5rem;
+}
+
+@media screen and (max-width: 1200px) {
+  #testimonials {
+    display: grid;
+    grid-template-columns: 1fr;
+  }
 }
 
 #testimonials figure {
