@@ -224,7 +224,7 @@ export default class Essay {
 
   showTimer() {
     let timerBox = document.querySelector("#timer-box");
-    timerBox.style.display = "block";
+    timerBox.style.display = "inline-block";
   }
 
   showContinueButton() {
@@ -298,13 +298,13 @@ export default class Essay {
   }
 
   insertQuestion(question) {
-    let questionContainer = document.querySelector(".white-box");
+    let whitebox = document.querySelector(".white-box");
 
     this.removeInstructions();
     this.processTemplates();
     this.question = this.templates["question-template"]({question});
-
-    questionContainer.innerHTML = this.question;
+    whitebox.innerHTML = this.question;
+    
     this.createTextarea();
   }
 

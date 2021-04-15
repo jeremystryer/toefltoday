@@ -4,8 +4,10 @@
   <meta charset="UTF-8">
   <meta http-equiv="X-UA-Compatible" content="IE=edge">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <link rel="stylesheet" href="./index.css">
-  <link rel="preconnect" href="https://fonts.gstatic.com">
+  <link rel="stylesheet" href="style/media-no-max-width.css">
+  <link rel="stylesheet" href="style/media-max-width-1024.css">
+  <link rel="stylesheet" href="style/media-max-width-768.css">
+  <link rel="stylesheet" href="style/media-max-width-480.css">
   <link href="https://fonts.googleapis.com/css2?family=Raleway&display=swap" rel="stylesheet">
   <link href="https://fonts.googleapis.com/css2?family=Roboto&display=swap" rel="stylesheet">
   <link href="https://fonts.googleapis.com/css2?family=Raleway:wght@600&display=swap" rel="stylesheet">
@@ -30,42 +32,48 @@
   </header>
   <main>
     <section id="writing-app">
-      <div id="controls-container">
+      <!-- <div id="controls-container"> -->
         <div id="controls">
-          <button class="new-question button">
+          <button class="new-question button large-button">
             <img src="./assets/png/button-icons/question-icon.png" alt="question icon" class="icon">
             <span class="button-text">New Question</span>
           </button> 
-          <button class="pause button" disabled>
+          <button class="pause button large-button" disabled>
             <img src="./assets/png/button-icons/pause-icon.png" alt="pause icon" class="icon">
             <span class="button-text">Pause</span>
           </button>
-          <button class="continue button">
+          <button class="continue button large-button">
             <img src="./assets/png/button-icons/continue-icon.png" alt="continue icon" class="icon">
             <span class="button-text">Continue</span>
           </button> 
-          <button class="finish button" disabled>
+          <button class="finish button large-button" disabled>
             <img src="./assets/png/button-icons/finish-icon.png" alt="finish icon" class="icon">
             <span class="button-text">Finish</span>
           </button>
-          <div id="timer-box"><span id="timer">30:00</span></div>
+          <div>
+            <div id="timer-box"><span id="timer">30:00</span></div>
+          </div>
+
         </div>
-     
+
+
+
         <div class="horizontal-thick-line-gray"></div>
-      </div>
+      <!-- </div> -->
       
       <div class="white-box">
+        
         <h1>Welcome to TOEFL Today's FREE writing app for the independent essay!</h1>
 
         <ol class="instructions">
           <li>
-            Click <button class="new-question button"><img src="./assets/png/button-icons/question-icon.png" alt="question icon" class="icon"><span class="button-text">New Question</span></button> above.
+            Click <button class="new-question button small-button"><img src="./assets/png/button-icons/question-icon.png" alt="question icon" class="icon"><span class="button-text">New Question</span></button> above.
           </li>
           <li>
             Write your essay.
           </li>
           <li>
-            Click <button class="finish button" disabled><img src="./assets/png/button-icons/finish-icon.png" alt="finish icon" class="icon"><span class="button-text">Finish</span></button> above when you are ready or the time ends.
+            Click <button class="finish button small-button" disabled><img src="./assets/png/button-icons/finish-icon.png" alt="finish icon" class="icon"><span class="button-text">Finish</span></button> above when you are ready or the time ends.
           </li>
           <li>
             TOEFL Today will review your spelling, vocabulary, grammar, and more!
@@ -106,11 +114,6 @@
         <textarea id="msg" name="user_message" placeholder="Message"></textarea>
         <input type="submit" value="Send">
       </form>
-
-      <!-- <div>
-        <p>Thanks for your message.</p>
-        <p>I will respond soon.</p>
-      </div> -->
     </section>
   </div>
 
