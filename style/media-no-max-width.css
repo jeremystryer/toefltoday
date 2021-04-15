@@ -54,13 +54,6 @@ main {
   overflow: hidden;
 }
 
-#controls-container {
-  /* box-sizing: border-box;
-  width: 100%;
-  background-color: #FFFFFF; */
-  outline: 3px solid red;
-}
-
 #controls {
   box-sizing: border-box;
   display: flex;
@@ -73,11 +66,11 @@ main {
 }
 
 .large-button:first-child {
-  margin-right: 6rem;
+  margin-right: 10rem;
 }
 
 .large-button:nth-child(4) {
-  margin-left: 6rem;
+  margin-left: 10rem;
 }
 
 .button {
@@ -130,18 +123,16 @@ main {
 
 .white-box {
   box-sizing: border-box;
-  margin: 0 auto;
   font-family: 'Roboto', sans-serif;
   font-size: 2.5rem;
   color: #30373D;
   background-color: #FFFFFF;
-  padding: 5% 0 0 15%;
+  /* padding: 5% 0 0 15%; */
+  padding: 5% 0;
   min-height: 150rem;
   position: relative;
-  /* border-radius: 0 0 15px 15px;
 
-  
-  /* position: relative; */
+  outline: 3px solid red;
 }
 
 #timer-box {
@@ -168,25 +159,27 @@ main {
   font-size: 3rem;
 }
 
-
-/* .white-box p {
-  margin: 0;
-} */
-
-/* .white-box h1 {
-  margin: 0 auto 4%;
+#welcome {
   text-align: center;
-} */
+  margin: 5rem;
+}
 
-/* .instructions {
-  display: block;
-  width: 100%;
-  margin: 3% auto 4%;
-} */
 
-/* .instructions li {
-  margin: 0 0 4% 0;
-} */
+#instructions {
+  display: inline-block;
+  text-align: left;
+  font-family: 'Roboto', sans-serif;
+  font-size: 3rem;
+}
+
+#instructions li {
+  margin: 0 5rem 5rem;
+}
+
+#instructions-container {
+  text-align: center;
+}
+
 
 
 
