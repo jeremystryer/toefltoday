@@ -259,7 +259,8 @@ export default class Essay {
   createTextarea() {
     let textarea = document.createElement("textarea");
     let growWrapDiv = document.createElement("div");
-    let whitebox = document.querySelector(".white-box")
+    let whitebox = document.querySelector(".whitebox");
+    let textContainer = document.querySelector("#text-container");
     
     growWrapDiv.classList.add("grow-wrap", "dont-break-out");
     textarea.classList.add("essay");
@@ -271,7 +272,8 @@ export default class Essay {
     textarea.autocorrect="off";
     textarea.autocapitalize="off";
 
-    whitebox.insertAdjacentElement("beforeend", growWrapDiv);
+    // whitebox.insertAdjacentElement("beforeend", growWrapDiv);
+    textContainer.insertAdjacentElement("beforeend", growWrapDiv);
     growWrapDiv.insertAdjacentElement("beforeend", textarea);
     this.createWordCounter();
     this.trackWordCount();
@@ -281,7 +283,12 @@ export default class Essay {
 
   createWordCounter() {
     let wordCountDiv = document.createElement("div");
-    let whitebox = document.querySelector(".white-box")
+    let whitebox = document.querySelector(".whitebox")
+    let existingWordCounter = document.querySelector(".word-count");
+
+    if (existingWordCounter) {
+      wordCounter.remove();
+    }
 
     whitebox.insertAdjacentElement("beforeend", wordCountDiv);
     wordCountDiv.classList.add("word-count");
@@ -298,19 +305,24 @@ export default class Essay {
   }
 
   insertQuestion(question) {
-    let whitebox = document.querySelector(".white-box");
+    // let whiteboxContainer = document.querySelector(".whitebox");
+    let textContainer = document.querySelector("#text-container");
 
     this.removeInstructions();
     this.processTemplates();
     this.question = this.templates["question-template"]({question});
-    whitebox.innerHTML = this.question;
+
+    textContainer.innerHTML = this.question;
     
     this.createTextarea();
   }
 
   removeInstructions() {
-    let whitebox = document.querySelector(".white-box");
-    whitebox.innerHTML = "";
+    // let whiteboxContainer = document.querySelector(".whitebox");
+    // whiteboxContainer.innerHTML = "";
+
+    let textContainer = document.querySelector("#text-container");
+    textContainer.innerHTML = "";
   }
 
   selectQuestion() {
