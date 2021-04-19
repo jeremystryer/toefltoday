@@ -33,19 +33,19 @@
   <main>
     <section id="writing-app">
         <div id="controls">
-          <button class="new-question button large-button">
+          <button class="orange new-question button large-button">
             <img src="./assets/png/button-icons/question-icon.png" alt="question icon" class="icon">
             <span class="button-text">New Question</span>
           </button> 
-          <button class="pause button large-button" disabled>
+          <button class="gray pause button large-button" disabled>
             <img src="./assets/png/button-icons/pause-icon.png" alt="pause icon" class="icon">
             <span class="button-text">Pause</span>
           </button>
-          <button class="continue button large-button">
+          <button class="gray continue button large-button">
             <img src="./assets/png/button-icons/continue-icon.png" alt="continue icon" class="icon">
             <span class="button-text">Continue</span>
           </button> 
-          <button class="finish button large-button" disabled>
+          <button class="blue finish button large-button" disabled>
             <img src="./assets/png/button-icons/finish-icon.png" alt="finish icon" class="icon">
             <span class="button-text">Finish</span>
           </button>
@@ -62,13 +62,13 @@
           <div id="instructions-container">
             <ol id="instructions">
               <li>
-                Click <button class="new-question button small-button"><img src="./assets/png/button-icons/question-icon.png" alt="question icon" class="icon"><span class="button-text">New Question</span></button> above.
+                Click <button class="orange button small-button"><img src="./assets/png/button-icons/question-icon.png" alt="question icon" class="icon"><span class="button-text">New Question</span></button> above.
               </li>
               <li>
                 Write your essay.
               </li>
               <li>
-                Click <button class="finish button small-button" disabled><img src="./assets/png/button-icons/finish-icon.png" alt="finish icon" class="icon"><span class="button-text">Finish</span></button> above when you are ready or the time ends.
+                Click <button class="blue button small-button" disabled><img src="./assets/png/button-icons/finish-icon.png" alt="finish icon" class="icon"><span class="button-text">Finish</span></button> above when you are ready or the time ends.
               </li>
               <li>
                 TOEFL Today will review your spelling, vocabulary, grammar, and more!
@@ -104,14 +104,15 @@
 
       <form action="#" method="post">
         <label for="name"></label>
-        <input type="text" id="name" name="user_name" placeholder="Name">
+        <input type="text" id="name" name="user_name" placeholder="Name" required>
 
         <label for="mail"></label>
-        <input type="email" id="mail" name="user_email" placeholder="Email">
+        <input type="email" id="mail" name="user_email" placeholder="Email" required>
 
         <label for="msg"></label>
-        <textarea id="msg" name="user_message" placeholder="Message"></textarea>
-        <input type="submit" value="Send">
+        <textarea id="msg" name="user_message" placeholder="Message" required></textarea>
+
+        <button type="submit" class="orange button large-button">Send</button>
       </form>
     </section>
   </div>
