@@ -7,7 +7,7 @@ export default class Timer {
 
   init() {
     this.showNewTimer();
-    setTimeout(this.launchTimer.bind(this), 1000);
+    setTimeout(this.launchTimer.bind(this), 5000);
   }
 
   launchTimer() {
