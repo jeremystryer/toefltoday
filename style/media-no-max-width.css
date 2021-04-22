@@ -51,7 +51,7 @@ main {
 #controls {
   box-sizing: border-box;
   display: flex;
-  padding: 5rem;
+  padding: 6rem;
   justify-content: center;
   background-color: #FFFFFF;
   z-index: 0;
@@ -208,6 +208,10 @@ main {
   font-family: 'Raleway', sans-serif;
 }
 
+#horizontal-line-about-contact {
+  display: none;
+}
+
 #about-me, #contact-me {
   width: 50%;
   text-align: center;
@@ -225,9 +229,8 @@ main {
 .section-title {
   font-size: 6rem;
   text-align: center;
-  padding: 0 1% 1%;
   display: inline-block;
-  margin: 0 auto 1%;
+  margin: 0 auto;
   border-bottom: thick solid #CB8E00;
 }
 
@@ -273,8 +276,8 @@ form textarea {
   text-align: center;
   font-family: 'Raleway', sans-serif;
   font-size: 2.5rem;
-  padding-top: 50px;
-  padding-bottom: 50px;
+  padding-top: 3%;
+  padding-bottom: 3%;
 }
 
 #testimonials {
@@ -284,20 +287,22 @@ form textarea {
   font-size: 1.5rem;
 }
 
-
-
 #testimonials figure {
   display: flex;
   align-items: center;
   text-align: left;
-  box-shadow: 10px 25px 25px  #dcdcde;
+  box-shadow: 20px 25px 25px  #dcdcde;
   border-radius: 15px;
-  padding: 0 3%;
+  /* padding: 0 3%; */
+  padding: 2% 5%;
+  font-size: 2.7rem;
+
 }
 
 .flag-icon {
   width: 30%;
   border: 1px solid #bab3b3;
+  vertical-align: middle;
 }
 
 #testimonials cite {
@@ -305,6 +310,10 @@ form textarea {
   font-weight: bold;
 }
 
+blockquote {
+  vertical-align: middle;
+  /* font-size: 2rem; */
+}
 
 
 

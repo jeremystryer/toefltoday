@@ -1,0 +1,32 @@
+@media screen and (max-width: 1200px) {
+  #timer-box {
+    position: absolute;
+    top: 82%;
+    right: 50%;
+    transform: translate(50%,-50%);
+  }
+
+  #controls {
+    padding-top: 7rem;
+    padding-bottom: 7rem;
+  }
+
+  #menu {
+    padding: 1%;
+  }
+
+  #menu-button {
+    display: block;
+    margin: 0;
+    padding: 1vw;
+    font-size: 3vh;
+    background-color: #000000;
+    color: #ffffff;
+    border: none;
+    outline: none;
+    cursor: pointer;
+    position: absolute;
+    left: 2%;
+    top: 1%;
+  }
+}

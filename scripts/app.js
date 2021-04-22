@@ -188,7 +188,8 @@ document.addEventListener('DOMContentLoaded', () => {
           [...menuItems].forEach(item => item.style.display = "block");
         } else if (windowWidth <= 1200) {
           [...menuItems].forEach(item => item.style.display = "none");
-          menuBtn.innerText = "☰";
+          // menuBtn.innerText = "☰";
+
         }
       });
     }

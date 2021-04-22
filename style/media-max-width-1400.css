@@ -1,14 +1,20 @@
-@media screen and (max-width: 900px) {
+@media screen and (max-width: 1400px) {
   html, body {
-    font-size: 35%;
+    font-size: 55%;
   }
 
   .large-button {
-    /* width: 12%; */
-    padding: 1rem;
-    text-align: center;
+    border-radius: 8px;
+    padding: 1rem 5rem;
   }
 
+  .icon {
+    padding: 0;
+  }
+
+  .button-text {
+    display: none;
+  }
   
   #about-contact-container {
     flex-direction: column;
