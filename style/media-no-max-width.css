@@ -20,7 +20,7 @@ main {
   display: flex;
   margin: 0 auto;
   justify-content: space-around;
-  font-size: 3.5rem;
+  font-size: 2rem;
 }
 
 #menu li {
@@ -51,7 +51,7 @@ main {
 #controls {
   box-sizing: border-box;
   display: flex;
-  padding: 6rem;
+  padding: 3rem;
   justify-content: center;
   background-color: #FFFFFF;
   z-index: 0;
@@ -71,8 +71,8 @@ main {
 .large-button {
   width: 18%;
   border-radius: 8px;
-  padding: 1.5rem;
-  font-size: 2.2rem;
+  padding: 1rem;
+  font-size: 1.25rem;
 }
 
 .large-button:first-child {
@@ -84,8 +84,8 @@ main {
 }
 
 .small-button {
-  padding: 1.5rem;
-  font-size: 2rem;
+  padding: 1rem 2rem;
+  font-size: 1rem;
 }
 
 .orange {
@@ -117,15 +117,12 @@ main {
 .whitebox {
   box-sizing: border-box;
   font-family: 'Roboto', sans-serif;
-  font-size: 2.5rem;
+  font-size: 2rem;
   color: #30373D;
   background-color: #FFFFFF;
   padding: 2% 0;
   min-height: 150rem;
   position: relative;
-
-  font-family: 'Roboto', sans-serif;
-  font-size: 3rem;  
 }
 
 #text-container {
@@ -152,7 +149,7 @@ main {
   color: #CB8E00;
   text-align: center;
   font-family: 'Roboto', sans-serif;
-  font-size: 3rem;
+  font-size: 2rem;
 }
 
 #welcome {
@@ -168,7 +165,7 @@ main {
   display: inline-block;
   text-align: left;
   font-family: 'Roboto', sans-serif;
-  font-size: 3rem;
+  font-size: 2rem;
 }
 
 #instructions li {
@@ -215,19 +212,19 @@ main {
 #about-me, #contact-me {
   width: 50%;
   text-align: center;
-  padding-top: 6rem;
-  padding-bottom: 5rem;
+  padding-top: 3rem;
+  padding-bottom: 1.75rem;
 }
 
 #about-me p,
 #contact-me p {
   padding: 0 6%;
-  font-size: 3rem;
+  font-size: 2rem;
   text-align: left;
 }
 
 .section-title {
-  font-size: 6rem;
+  font-size: 4rem;
   text-align: center;
   display: inline-block;
   margin: 0 auto;
@@ -247,7 +244,7 @@ form textarea {
   border: 1px solid #707070;
   color: #30373D;
   font-family: "Raleway";
-  font-size: 3rem;
+  font-size: 1.75rem;
   padding: 3%;
   margin-bottom: 2%;
   border-radius: 10px;
@@ -284,7 +281,7 @@ form textarea {
   display: grid;
   grid-template-columns: 1fr 1fr;
   padding: 50px;
-  font-size: 1.5rem;
+  font-size: 1.75rem;
 }
 
 #testimonials figure {
@@ -293,14 +290,13 @@ form textarea {
   text-align: left;
   box-shadow: 20px 25px 25px  #dcdcde;
   border-radius: 15px;
-  /* padding: 0 3%; */
   padding: 2% 5%;
-  font-size: 2.7rem;
+  /* font-size: 1rem; */
 
 }
 
 .flag-icon {
-  width: 30%;
+  width: 20%;
   border: 1px solid #bab3b3;
   vertical-align: middle;
 }
@@ -312,10 +308,7 @@ form textarea {
 
 blockquote {
   vertical-align: middle;
-  /* font-size: 2rem; */
 }
-
-
 
 .report-container {
   margin: 0 auto;
@@ -350,32 +343,6 @@ blockquote {
   display: block;
   margin: 0 auto 3%;
 }
-
-/* #report-container {
-  display: none;
-} */
-
-/* .horizontal-thick-line-gray {
-  display: block;
-  width: 95%;
-  margin: 0 auto;
-  border-top: 5px solid #a9a6a6;
-  padding: 1%;
-} */
-
-
-
-/* #question-container {
-  position: absolute;
-  top: 20%;
-  left: 50%;
-} */
-
-
-
-
-
-
 
 footer {
   margin: 0;
