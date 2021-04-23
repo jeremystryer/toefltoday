@@ -144,6 +144,7 @@ document.addEventListener('DOMContentLoaded', () => {
     newQuestionEvent() {
       [...this.newQuestionBtns].forEach(btn => {
         btn.addEventListener("click", (e) => {
+
           let reportContainer = document.querySelector(".report-container");
           let mainArea = document.querySelector("main");
 
