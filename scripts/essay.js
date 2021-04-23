@@ -287,7 +287,8 @@ export default class Essay {
     let existingWordCounter = document.querySelector(".word-count");
 
     if (existingWordCounter) {
-      wordCounter.remove();
+      existingWordCounter.remove();
+      // wordCounter.remove();
     }
 
     whitebox.insertAdjacentElement("beforeend", wordCountDiv);
