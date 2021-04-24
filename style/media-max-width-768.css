@@ -6,6 +6,10 @@
   .small-button {
     padding: 1rem 3rem;
   }
+
+  .whitebox {
+    min-height: 40rem;
+  }
   
   #about-contact-container {
     flex-direction: column;
