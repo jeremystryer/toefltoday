@@ -121,7 +121,7 @@ main {
   color: #30373D;
   background-color: #FFFFFF;
   padding: 2% 0;
-  min-height: 150rem;
+  min-height: 85rem;
   position: relative;
 }
 
@@ -424,8 +424,8 @@ footer p {
 
 .word-count {
   position: absolute;
-  bottom: 2%;
-  right: 3%;
+  bottom: 20px;
+  right: 45px;
   color: #6a6767;
 }
 
