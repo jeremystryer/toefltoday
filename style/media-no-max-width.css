@@ -43,7 +43,7 @@ main {
 #writing-app {
   position: relative;
   width: 70%;
-  border-radius: 5rem;
+  border-radius: 3rem;
   margin: 0 auto;
   overflow: hidden;
 }
@@ -318,7 +318,7 @@ blockquote {
   color: #30373D;
   background-color: #FFFFFF;
   padding: 2%;
-  border-radius: 15px;
+  border-radius: 3rem;;
   position: relative;
   width: 35%;
   overflow: hidden;

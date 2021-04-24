@@ -44,7 +44,7 @@ export default class Essay {
     mainArea.style.display = "flex";
     mainArea.insertAdjacentElement("afterbegin", reportContainer);
     reportContainer.insertAdjacentElement("afterbegin", reportContent);
-    reportContainer.style.height = this.getHeightOfEssay();
+    // reportContainer.style.height = this.getHeightOfEssay();
   }
 
   reduceWritingAppWidth() {
@@ -64,6 +64,7 @@ export default class Essay {
     let pauseBtn = document.querySelector(".pause");
     let continueBtn = document.querySelector(".continue");
     let finishBtn = document.querySelector(".finish");
+    let controls = document.querySelector("#controls");
 
     pauseBtn.style.display = "none";
     continueBtn.style.display = "none";
@@ -153,13 +154,13 @@ export default class Essay {
     return essay.value.replace(/\n$/gm, '').split(/\n/);
   }
 
-  getHeightOfEssay() {
-    let whitebox = document.querySelector(".white-box");
-    let controlsContainer = document.querySelector("#controls-container");
-    let offsetHeightOfWhitebox = whitebox.offsetHeight;
-    let offsetHeightOfControlsContainer = controlsContainer.offsetHeight;
-    return offsetHeightOfWhitebox + offsetHeightOfControlsContainer + "px";
-  }
+  // getHeightOfEssay() {
+  //   let whitebox = document.querySelector(".whitebox");
+  //   let controls = document.querySelector("#controls");
+  //   let offsetHeightOfWhitebox = whitebox.offsetHeight;
+  //   let offsetHeightOfControls = controls.offsetHeight;
+  //   return offsetHeightOfWhitebox + offsetHeightOfControls + "px";
+  // }
 
   removeTimer() {
     let timerBox = document.querySelector("#timer-box");

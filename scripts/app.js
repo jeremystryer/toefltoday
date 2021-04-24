@@ -111,13 +111,20 @@ document.addEventListener('DOMContentLoaded', () => {
 
           this.pauseBtn.disabled = true;
           this.continueBtn.disabled = true;
-          
+          this.disableFinishBtns();
+
           this.essay.timer.stopTimer();
           this.essay.countParagraphs();
           this.essay.countWordsPerParagraph();
-  
+
           this.essay.api = new API(essayContent, this.essay.generateReport.bind(this.essay));
         });
+      });
+    }
+
+    disableFinishBtns() {
+      [...this.finishBtns].forEach(btn => {
+        btn.disabled = true;
       });
     }
 
@@ -144,7 +151,6 @@ document.addEventListener('DOMContentLoaded', () => {
     newQuestionEvent() {
       [...this.newQuestionBtns].forEach(btn => {
         btn.addEventListener("click", (e) => {
-
           let reportContainer = document.querySelector(".report-container");
           let mainArea = document.querySelector("main");
 
