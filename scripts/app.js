@@ -22,8 +22,8 @@ document.addEventListener('DOMContentLoaded', () => {
       this.pauseEvent();
       this.continueEvent();
       this.finishEvent();
-      this.modifyMenuOnResize();
-      this.toggleMenuForSmallerScreens();
+      // this.modifyMenuOnResize();
+      // this.toggleMenuForSmallerScreens();
       this.submitFormEvent();
     }
 
@@ -160,9 +160,15 @@ document.addEventListener('DOMContentLoaded', () => {
           }
 
           if (reportContainer) {
+            let newQuestionBtn = document.querySelector(".new-question");
+
             let writingAppSection = document.querySelector("#writing-app");
+            writingAppSection.classList.remove("flex-2");
+            writingAppSection.classList.add("center");
 
             reportContainer.remove();
+            newQuestionBtn.classList.add("margin-right");
+
             mainArea.style.display = "block";
             writingAppSection.style.width = "80%";
           }
@@ -185,36 +191,36 @@ document.addEventListener('DOMContentLoaded', () => {
       return this.essay;
     }
 
-    modifyMenuOnResize() {
-      window.addEventListener("resize", event => {
-        let windowWidth = window.innerWidth;
-        let menuItems = menu.getElementsByTagName("li");
-        let menuBtn = document.querySelector("#menu-button");
+    // modifyMenuOnResize() {
+    //   window.addEventListener("resize", event => {
+    //     let windowWidth = window.innerWidth;
+    //     let menuItems = menu.getElementsByTagName("li");
+    //     let menuBtn = document.querySelector("#menu-button");
 
-        if (windowWidth >= 1200) {
-          [...menuItems].forEach(item => item.style.display = "block");
-        } else if (windowWidth <= 1200) {
-          [...menuItems].forEach(item => item.style.display = "none");
-          // menuBtn.innerText = "☰";
+    //     if (windowWidth >= 1200) {
+    //       [...menuItems].forEach(item => item.style.display = "block");
+    //     } else if (windowWidth <= 1200) {
+    //       [...menuItems].forEach(item => item.style.display = "none");
+    //     }
+    //   });
+    // }
 
-        }
-      });
-    }
+    // toggleMenuForSmallerScreens() {
+    //   let menuBtn = document.querySelector("#menu-button");
+    //   let menuItems = menu.getElementsByTagName("li");
 
-    toggleMenuForSmallerScreens() {
-      let menuBtn = document.querySelector("#menu-button");
-      let menuItems = menu.getElementsByTagName("li");
+    //   menuBtn.addEventListener("click", e => {
+    //     if (e.target.innerText === ("✕")) {
+    //       e.target.innerText = "☰";
+    //       [...menuItems].forEach(item => item.style.display = "none");
+    //       modalMenuToggle.style.display = "none";
 
-      menuBtn.addEventListener("click", e => {
-        if (e.target.innerText === ("✕")) {
-          e.target.innerText = "☰";
-          [...menuItems].forEach(item => item.style.display = "none");
-        } else if (e.target.innerText === "☰") {
-          e.target.innerText = "✕";
-          [...menuItems].forEach(item => item.style.display = "block");
-        }
-      });
-    }
+    //     } else if (e.target.innerText === "☰") {
+    //       e.target.innerText = "✕";
+    //       [...menuItems].forEach(item => item.style.display = "block");
+    //     }
+    //   });
+    // }
   }
 
   new App();
