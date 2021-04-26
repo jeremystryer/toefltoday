@@ -18,20 +18,20 @@
 <body>
   <header>
     <nav>
+      <img src="./assets/svg/logo.svg" alt="TOEFL Today Logo" id="logo"> 
       <ul id="menu">
-        <button id="menu-button">☰</button>
+        <!-- <button id="menu-button">☰</button> -->
         <li><a href="#writing-app">Writing App</a></li>
         <li><a href="#about-me">About Me</a></li>
-        <img src="./assets/svg/logo.svg" alt="TOEFL Today Logo" id="logo"> 
         <li><a href="#contact-me">Contact Me</a></li>
-        <li><a href="#testimonials">Student Reviews</a></li> 
+        <li><a href="#testimonials-section">Student Reviews</a></li> 
       </ul>
     </nav>
   </header>
   <main>
-    <section id="writing-app">
+    <section id="writing-app" class="center">
         <div id="controls">
-          <button class="orange new-question button large-button">
+          <button class="orange new-question button large-button margin-right">
             <img src="./assets/png/button-icons/question-icon.png" alt="question icon" class="icon">
             <span class="button-text">New Question</span>
           </button> 
@@ -43,7 +43,7 @@
             <img src="./assets/png/button-icons/continue-icon.png" alt="continue icon" class="icon">
             <span class="button-text">Continue</span>
           </button> 
-          <button class="blue finish button large-button" disabled>
+          <button class="blue finish button large-button margin-left" disabled>
             <img src="./assets/png/button-icons/finish-icon.png" alt="finish icon" class="icon">
             <span class="button-text">Finish</span>
           </button>
@@ -172,8 +172,10 @@
     </div> -->
   <!-- </footer> -->
 
-  <div id="modal-time-ended">
-    <div id="modal-content-time-ended">
+  <div class="modal" id="modal-menu-toggle"></div>
+
+  <div class="modal" id="modal-time-ended">
+    <div id="modal-content-time-ended" class="modal-content">
       <span class="close-button">&times;</span>
       <img src="./assets/png/social-media/logo-orange-and-blue.png" alt="logo">
       <p>Your time has ended. Review your essay</p>
@@ -181,8 +183,8 @@
     </div>
   </div>
 
-  <div id="modal-message-confirmation">
-    <div id="modal-content-message-confirmation">
+  <div class="modal" id="modal-message-confirmation">
+    <div id="modal-content-message-confirmation" class="modal-content">
       <span class="close-button">&times;</span>
       <img src="./assets/png/social-media/logo-orange-and-blue.png" alt="logo">
       <p>Thanks for your message. I will respond soon.</p>
