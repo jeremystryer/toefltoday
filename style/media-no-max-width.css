@@ -6,7 +6,16 @@ html, body {
 
 header {
   width: 100%;
+  height: 100px;
   background: #000000;
+  position: relative;
+}
+
+#logo {
+  position: absolute;
+  top: 50%;
+  right: 50%;
+  transform: translate(50%,-50%);
 }
 
 main {
@@ -24,7 +33,12 @@ main {
 }
 
 #menu li {
+  display: block;
   padding: 5rem 0;
+}
+
+#menu li:nth-child(2) {
+  margin-right: 20%;
 }
 
 #menu a:hover {
@@ -36,15 +50,15 @@ main {
   text-decoration: none;
 }
 
-#menu-button {
+/* #menu-button {
   display: none;
-}
+} */
 
 #writing-app {
   position: relative;
   width: 70%;
   border-radius: 3rem;
-  margin: 0 auto;
+  /* margin: 0 auto; */
   overflow: hidden;
 }
 
@@ -75,13 +89,21 @@ main {
   font-size: 1.25rem;
 }
 
-.large-button:first-child {
+/* .large-button:first-child {
+  margin-right: 10rem;
+} */
+
+.margin-right {
   margin-right: 10rem;
 }
 
-.large-button:nth-child(4) {
+.margin-left {
   margin-left: 10rem;
 }
+
+/* .large-button:nth-child(4) {
+  margin-left: 10rem;
+} */
 
 .small-button {
   padding: 1rem 2rem;
@@ -134,7 +156,6 @@ main {
 #timer-box {
   background-color: #333333;
   padding: 0.5% 2%;
-  border-radius: 5px;
   display: none;
   position: absolute;
   top: 50%;
@@ -311,24 +332,49 @@ blockquote {
 }
 
 .report-container {
-  margin: 0 auto;
+  /* margin: 0 auto; */
   box-sizing: border-box;
   font-family: 'Roboto', sans-serif;
   font-size: 2rem;
   color: #30373D;
   background-color: #FFFFFF;
   padding: 2%;
-  border-radius: 3rem;;
+  border-radius: 3rem;
+  /* position: relative; */
+  /* width: 40%; */
+  /* overflow: hidden; */
+
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+}
+
+.flex-1 {
+  flex: 1;
+  margin: 0 2%;
+}
+
+.flex-2 {
+  flex: 2;
+  margin: 0 2%;
+}
+
+.center {
+  margin: 0 auto;
+}
+
+.wrapper {
   position: relative;
-  width: 35%;
-  overflow: hidden;
+  /* overflow: auto; */
 }
 
 .report-content {
   width: 100%;
   height: 100%;
   overflow: auto;
-  padding: 3%;
+  /* padding: 3%; */
 }
 
 #report > h1 {
@@ -429,7 +475,7 @@ footer p {
   color: #6a6767;
 }
 
-#modal-time-ended {
+/* #modal-time-ended {
   display: none;
   position: fixed;
   z-index: 1;
@@ -438,12 +484,24 @@ footer p {
   top: 0;
   width: 100%;
   height: 100%;
-  /* overflow: auto; */
+  background-color: rgba(0,0,0,0.6); 
+  text-align: center;
+} */
+
+.modal {
+  display: none;
+  position: fixed;
+  z-index: 1;
+  padding-top:;
+  left: 0;
+  top: 0;
+  width: 100%;
+  height: 100%;
   background-color: rgba(0,0,0,0.6); 
   text-align: center;
 }
 
-#modal-content-time-ended {
+.modal-content {
   background-color: #fefefe;
   margin: auto;
   padding: 20px;
@@ -459,38 +517,6 @@ footer p {
   border-radius: 10px;
   padding-bottom: 1.5%;
 }
-
-#modal-message-confirmation {
-  display: none;
-  position: fixed;
-  z-index: 1;
-  padding-top:;
-  left: 0;
-  top: 0;
-  width: 100%;
-  height: 100%;
-  /* overflow: auto; */
-  background-color: rgba(0,0,0,0.6); 
-  text-align: center;
-}
-
-#modal-content-message-confirmation {
-  background-color: #fefefe;
-  margin: auto;
-  padding: 20px;
-  border: 1px solid #888;
-  width: 80%;
-  font-family: "Raleway";
-  font-size: 2rem;
-  position: fixed;
-  top: 50%;
-  left: 50%;
-  transform: translate(-50%, -50%);
-  width: 50%;
-  border-radius: 10px;
-  padding-bottom: 1.5%;
-}
-
 
 .close-button {
   color: #aaaaaa;
