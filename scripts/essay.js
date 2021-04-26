@@ -34,23 +34,41 @@ export default class Essay {
 
   createAreaForReport() {
     let mainArea = document.querySelector("main");
+    let wrapper = document.createElement("div");
     let reportContainer = document.createElement("div");
     let reportContent = document.createElement("div");
-    let writingAppSection = document.querySelector("#writing-app");
-
+    let writingApp = document.querySelector("#writing-app");
+    let newQuestionBtn = document.querySelector(".new-question");
+    
+    mainArea.style.display = "flex";
+    wrapper.classList.add("wrapper");
+    
     reportContainer.classList.add("report-container");
     reportContent.classList.add("report-content");
 
-    mainArea.style.display = "flex";
-    mainArea.insertAdjacentElement("afterbegin", reportContainer);
+    wrapper.classList.add("flex-1");
+
+    writingApp.classList.remove("center");
+    writingApp.classList.add("flex-2");
+
+    mainArea.insertAdjacentElement("afterbegin", wrapper);
+    wrapper.insertAdjacentElement("afterbegin", reportContainer);
     reportContainer.insertAdjacentElement("afterbegin", reportContent);
-    // reportContainer.style.height = this.getHeightOfEssay();
+
+    newQuestionBtn.classList.remove("margin-right");
   }
 
-  reduceWritingAppWidth() {
-    let writingAppSection = document.querySelector("#writing-app");
-    writingAppSection.style.width = "60%";
-  }
+  // getCurrentHeightofEssay() {
+  //   let writingApp = document.querySelector("#writing-app");
+  //   let writingAppHeight = writingApp.offsetHeight;
+  //   console.log(writingAppHeight);
+  //   return writingAppHeight + "px";
+  // }
+
+  // reduceWritingAppWidth() {
+  //   let writingAppSection = document.querySelector("#writing-app");
+  //   writingAppSection.style.width = "55%";
+  // }
 
   // removeTimeEndedModal() {
   //   let timeEndedModal = document.querySelector("#modal-time-ended");
@@ -181,7 +199,7 @@ export default class Essay {
   modifyScreenView() {
     this.removeButtons(); 
     // this.removeTimeEndedModal(); 
-    this.reduceWritingAppWidth();
+    // this.reduceWritingAppWidth();
     this.disableTextArea();
     this.createAreaForReport(); 
   }
