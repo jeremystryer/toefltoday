@@ -28,6 +28,10 @@
     display: none;
   }
 
+  /* #menu {
+    flex-direction: column;
+  }
+
   #menu-button {
     display: block;
     margin: 0;
@@ -40,12 +44,20 @@
     cursor: pointer;
     position: absolute;
     left: 2%;
-    top: 1%;
+    top: 20%;
+  }
+
+  #menu {
+    margin-left: 5rem;
   }
 
   #menu li {
     display: none;
   }
+
+  #menu li {
+    padding: 1.5rem;
+  } */
 
   #horizontal-line-about-contact {
     display: block;
