@@ -40,7 +40,7 @@ export default class Essay {
     let writingApp = document.querySelector("#writing-app");
     let newQuestionBtn = document.querySelector(".new-question");
     
-    mainArea.style.display = "flex";
+    mainArea.classList.add("flex-container");
     wrapper.classList.add("wrapper");
     
     reportContainer.classList.add("report-container");
