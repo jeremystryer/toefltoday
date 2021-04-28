@@ -9,6 +9,7 @@ header {
   height: 100px;
   background: #000000;
   position: relative;
+  z-index: 1;
 }
 
 #logo {
@@ -25,11 +26,21 @@ main {
   padding-bottom: 5%;
 }
 
+.flex-container {
+  display: flex;
+  flex-direction: row;
+}
+
 #menu {
   display: flex;
+  flex-direction: row;
   margin: 0 auto;
   justify-content: space-around;
   font-size: 2rem;
+}
+
+#menu-button {
+  display: none;
 }
 
 #menu li {
@@ -338,7 +349,7 @@ blockquote {
   font-size: 2rem;
   color: #30373D;
   background-color: #FFFFFF;
-  padding: 2%;
+  padding: 3%;
   border-radius: 3rem;
   /* position: relative; */
   /* width: 40%; */
