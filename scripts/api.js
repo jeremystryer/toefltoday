@@ -28,7 +28,6 @@ export default class API {
     };
     
     $.ajax(settings).done(function (response) {
-      console.log(response);
       generateReportFunc(response);
     });
   }

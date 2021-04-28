@@ -206,7 +206,6 @@ export default class Essay {
 
   resetTimer() {
     if (this.timer) {
-      console.log('reset');
       clearInterval(this.timer.timerId);
     }
 
