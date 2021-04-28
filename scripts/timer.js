@@ -12,15 +12,16 @@ export default class Timer {
 
   launchTimer() {
     this.setTimerProperties();
-    this.enableNewQuestionBtn();
+    this.enableBtns();
     this.runTimer();
   }
 
-  enableNewQuestionBtn() {
-    let controls = document.querySelector("#controls");
+  enableBtns() {
     let newQuestionBtn = controls.querySelector(".new-question");
-
-    newQuestionBtn.disabled = false;
+    let pauseBtn = controls.querySelector(".pause");
+    let finishBtn = controls.querySelector(".finish");
+    
+    [newQuestionBtn, pauseBtn, finishBtn].forEach(btn => btn.disabled = false);
   }
 
   setTimerProperties() {
