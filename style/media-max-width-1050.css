@@ -56,8 +56,6 @@
   #writing-app {
     width: 90%;
     box-sizing: border-box;
-    max-height: 60rem;
-    overflow: auto;
     margin-top: 5%;
   }
 
@@ -67,7 +65,7 @@
   }
 
   .flex-2 {
-    margin: 0; 
+    margin: 0;
   }
 
   .icon {
