@@ -242,18 +242,48 @@ main {
 }
 
 #about-me, #contact-me {
-  width: 50%;
+  flex: 1;
   text-align: center;
   padding-top: 3rem;
   padding-bottom: 1.75rem;
+  font-family: 'Raleway', sans-serif;
+}
+
+#about-me h2 {
+  text-align: center;
+  font-size: 2.75rem;
 }
 
 #about-me p,
 #contact-me p {
-  padding: 0 6%;
   font-size: 2rem;
   text-align: left;
 }
+
+.about-and-contact-text-container {
+  width: 80%;
+  margin: 0 auto;
+}
+
+.about-and-contact-text-container ul {
+  text-align: left;
+  font-size: 2rem;
+}
+
+.about-and-contact-text-container li {
+  list-style-type: circle;
+}
+
+/* #profile-photo-container {
+  margin: 0 auto;
+} */
+
+ #profile-photo-container img {
+  margin-top: 25px;
+  width: 200px;
+  height: auto;
+  border-radius: 15px;
+ }
 
 .section-title {
   font-size: 4rem;
@@ -265,7 +295,7 @@ main {
 
 form {
   width: 60%;
-  margin: 5% auto;
+  margin: 8% auto 0;
 }
 
 form input,
@@ -297,7 +327,7 @@ form textarea {
 
 .vertical-line-gray {
   border-left: 1px solid #a9a6a6;
-  margin: 2% 2% 4% 2%;
+  margin: 2% 0;
 }
 
 #testimonials-section {
@@ -324,7 +354,6 @@ form textarea {
   border-radius: 15px;
   padding: 2% 5%;
   /* font-size: 1rem; */
-
 }
 
 .flag-icon {
