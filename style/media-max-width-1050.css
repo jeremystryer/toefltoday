@@ -98,8 +98,7 @@
 
   #about-me p,
   #contact-me p {
-    padding: 0 22%;
-    text-align: center;
+    text-align: left;
   }
 
   form {
