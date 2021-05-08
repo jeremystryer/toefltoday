@@ -6,11 +6,11 @@ export default class Timer {
   }
 
   init() {
-    this.showNewTimer();
     setTimeout(this.launchTimer.bind(this), 5000);
   }
 
   launchTimer() {
+    this.showNewTimer();
     this.setTimerProperties();
     this.enableBtns();
     this.runTimer();
